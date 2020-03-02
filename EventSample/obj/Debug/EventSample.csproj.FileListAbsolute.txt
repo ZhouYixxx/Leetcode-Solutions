@@ -1,7 +1,0 @@
-E:\VS2015Code\DailyTest\EventSample\bin\Debug\EventSample.exe.config
-E:\VS2015Code\DailyTest\EventSample\bin\Debug\EventSample.exe
-E:\VS2015Code\DailyTest\EventSample\bin\Debug\EventSample.pdb
-E:\VS2015Code\DailyTest\EventSample\obj\Debug\EventSample.csprojAssemblyReference.cache
-E:\VS2015Code\DailyTest\EventSample\obj\Debug\EventSample.csproj.CoreCompileInputs.cache
-E:\VS2015Code\DailyTest\EventSample\obj\Debug\EventSample.exe
-E:\VS2015Code\DailyTest\EventSample\obj\Debug\EventSample.pdb
