@@ -1,0 +1,11 @@
+E:\VS2015Code\DailyTest\LeetCode\bin\Debug\netcoreapp2.1\CodePractice.deps.json
+E:\VS2015Code\DailyTest\LeetCode\bin\Debug\netcoreapp2.1\CodePractice.runtimeconfig.json
+E:\VS2015Code\DailyTest\LeetCode\bin\Debug\netcoreapp2.1\CodePractice.runtimeconfig.dev.json
+E:\VS2015Code\DailyTest\LeetCode\bin\Debug\netcoreapp2.1\CodePractice.dll
+E:\VS2015Code\DailyTest\LeetCode\bin\Debug\netcoreapp2.1\CodePractice.pdb
+E:\VS2015Code\DailyTest\LeetCode\obj\Debug\netcoreapp2.1\CodePractice.csprojAssemblyReference.cache
+E:\VS2015Code\DailyTest\LeetCode\obj\Debug\netcoreapp2.1\CodePractice.csproj.CoreCompileInputs.cache
+E:\VS2015Code\DailyTest\LeetCode\obj\Debug\netcoreapp2.1\CodePractice.AssemblyInfoInputs.cache
+E:\VS2015Code\DailyTest\LeetCode\obj\Debug\netcoreapp2.1\CodePractice.AssemblyInfo.cs
+E:\VS2015Code\DailyTest\LeetCode\obj\Debug\netcoreapp2.1\CodePractice.dll
+E:\VS2015Code\DailyTest\LeetCode\obj\Debug\netcoreapp2.1\CodePractice.pdb
