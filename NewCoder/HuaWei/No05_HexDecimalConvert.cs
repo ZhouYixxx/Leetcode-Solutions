@@ -1,6 +1,6 @@
 ﻿namespace CodePractice.NewCoder.HuaWei
 {
-    public class No5_HexDecimalConvert
+    public class No05_HexDecimalConvert
     {
         /// <summary>
         /// 十六进制转化

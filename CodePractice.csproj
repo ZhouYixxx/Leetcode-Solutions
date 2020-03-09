@@ -5,4 +5,15 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="BasicDataStructure\Graph\" />
+    <Folder Include="BasicDataStructure\Tree\" />
+    <Folder Include="BasicDataStructure\Array\" />
+    <Folder Include="LeetCode\Array\" />
+    <Folder Include="LeetCode\Graph\" />
+    <Folder Include="LeetCode\LinkedList\" />
+    <Folder Include="LeetCode\Math\" />
+    <Folder Include="LeetCode\Tree\" />
+  </ItemGroup>
+
 </Project>
