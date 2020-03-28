@@ -103,7 +103,7 @@ namespace CodePractice.BasicDataStructure.LinkedList
         /// 链表删除一个节点
         /// </summary>
         /// <param name="node">要删除的节点</param>
-        public void Insert(Node<T> node)
+        public void Delete(Node<T> node)
         {
             if (node == null)
             {

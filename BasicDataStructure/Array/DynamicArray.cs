@@ -11,6 +11,29 @@ namespace CodePractice.BasicDataStructure.Array
 {
     public class DynamicArray<T> 
     {
+        public static void Test()
+        {
+            DynamicArray<int> array = new DynamicArray<int>(4);
+            array[0] = 10;
+            array[1] = 5;
+            array[2] = 4;
+            var cap = array.Capacity();
+            var count = array.Count;
+            Console.WriteLine($"Capacity:{cap}; Count:{count};");
+            Console.ReadKey();
+            array[3] = 6;
+            array[4] = 7;
+            array[5] = 8;
+            array[6] = 9;
+            array[7] = 1;
+            array[8] = 23;
+            array[9] = 44;
+            var cap1 = array.Capacity();
+            var count1 = array.Count;
+            Console.WriteLine($"Capacity:{cap1}; Count:{count1};");
+            Console.ReadKey();
+        }
+
         private T[] _data;
         //数组中的元素个数（非容量）
         private int _size;
