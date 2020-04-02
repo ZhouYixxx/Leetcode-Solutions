@@ -47,7 +47,13 @@ namespace CodePractice
 
             #region 链表中环的检测
 
-            CheckCircle.Test();
+            //CheckCircle.Test();
+
+            #endregion
+
+            #region 合并两个有序链表
+
+            MergeTwoLists.Test();
 
             #endregion
         }
