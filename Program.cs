@@ -33,6 +33,8 @@ namespace CodePractice
 
             #endregion
 
+            #region LinkedList
+
             #region 实现一个动态扩容数组
 
             //DynamicArray<int>.Test();
@@ -53,9 +55,18 @@ namespace CodePractice
 
             #region 合并两个有序链表
 
-            MergeTwoLists.Test();
+            //MergeTwoLists.Test();
 
             #endregion
+
+            #region 删除链表倒数第N个元素
+
+            DeleteNode.Test();
+
+            #endregion
+
+            #endregion
+
         }
     }
 }

@@ -4,6 +4,12 @@ namespace CodePractice.BasicDataStructure.LinkedList
 {
     public class MergeTwoLists
     {
+        /// <summary>
+        /// 迭代法
+        /// </summary>
+        /// <param name="node1"></param>
+        /// <param name="node2"></param>
+        /// <returns></returns>
         public static Node<int> Merge(Node<int> node1, Node<int> node2) 
         {
             Node<int> hNode = node1.Value >= node2.Value ? node2 : node1;
@@ -54,6 +60,34 @@ namespace CodePractice.BasicDataStructure.LinkedList
             return hNode;
         }
 
+        /// <summary>
+        /// 迭代法（采用带头结点的链表,无需考虑NextNode为null的情况）
+        /// </summary>
+        /// <param name="node1"></param>
+        /// <param name="node2"></param>
+        /// <returns></returns>
+        public static Node<int> Merge2(Node<int> node1, Node<int> node2)
+        {
+            Node<int> preHead = new Node<int>();
+            Node<int> prevNode = preHead;
+            while (node1 != null && node2 != null)
+            {
+                if (node1.Value <= node2.Value)
+                {
+                    prevNode.NextNode = node1;
+                    node1 = node1.NextNode;
+                }
+                else
+                {
+                    prevNode.NextNode = node2;
+                    node2 = node2.NextNode;
+                }
+                prevNode = prevNode.NextNode;
+            }
+            prevNode.NextNode = node1 ?? node2;
+            return preHead.NextNode;
+        }
+
         public static void Test()
         {
             var head1 = new Node<int>(1);
@@ -73,7 +107,7 @@ namespace CodePractice.BasicDataStructure.LinkedList
             node4.NextNode = node5;
             node5.NextNode = node6;
 
-            var hNode = Merge(head1, head2);
+            var hNode = Merge2(head1, head2);
             while (hNode != null)
             {
                 Console.Write(hNode.NextNode != null ? $"{hNode.Value} --> " : $"{hNode.Value}");
