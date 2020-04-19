@@ -5,7 +5,9 @@ using System.Linq;
 using CodePractice.BasicDataStructure.Array;
 using CodePractice.BasicDataStructure.LinkedList;
 using CodePractice.BasicDataStructure.Stack_Queue;
+using CodePractice.LeetCode.Array;
 using CodePractice.LeetCode.Stack_Quene;
+using CodePractice.LeetCode.String;
 using CodePractice.NewCoder.HuaWei;
 
 namespace CodePractice
@@ -61,7 +63,64 @@ namespace CodePractice
 
             #region 删除链表倒数第N个元素
 
-            DeleteNode.Test();
+            //DeleteNode.Test();
+
+
+            #endregion
+
+            #endregion
+
+            #region String
+
+            #region 917.仅仅反转字母
+
+            //ReverseOnlyLetters_917.Test();
+
+            #endregion
+
+            #region 50面试.第一个只出现一次的字符
+
+            //FirstUniqChar_50Interview.Test();
+
+            #endregion
+
+            #endregion
+
+            #region Array
+
+            #region 26.去除有序数组重复元素
+
+            //RemoveDuplicates_26.Test();
+
+            #endregion
+
+            #region 977.有序数组的平方
+
+            //SquaresSortedArray_977.Test();
+
+            #endregion
+
+            #region 88. 合并两个有序数组
+
+            //_MergeSortedArray_88.Test();
+
+            #endregion
+
+            #region 1. 两数之和
+
+            //TwoSum_001.Test();
+
+            #endregion
+
+            #region 283. 移动零
+
+            //MoveZeroes_283.Test();
+
+            #endregion
+
+            #region 66. 加一
+
+            PlusOne_66.Test();
 
             #endregion
 

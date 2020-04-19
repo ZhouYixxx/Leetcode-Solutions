@@ -31,8 +31,8 @@ namespace CodePractice.BasicDataStructure.LinkedList
                 return false;
             }
             var slowNode = head;
-            var fastNode = head.NextNode;
-            while (slowNode != null && fastNode != null)
+            var fastNode = head;
+            while (fastNode != null)
             {
                 slowNode = slowNode?.NextNode;
                 fastNode = fastNode.NextNode?.NextNode;

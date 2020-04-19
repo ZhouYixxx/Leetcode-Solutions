@@ -2,8 +2,44 @@
 
 namespace CodePractice.BasicDataStructure.LinkedList
 {
+
+    public class ListNode
+    {
+        public int val;
+        public ListNode next;
+        public ListNode(int x) { val = x; }
+    }
     public class MergeTwoLists
     {
+        public ListNode MergeTwoLists1(ListNode l1, ListNode l2)
+        {
+            ListNode preHead = new ListNode(0);
+            ListNode prevNode = preHead;
+            while (l1 != null && l2 != null)
+            {
+                if (l1.val <= l2.val)
+                {
+                    prevNode.next = l1;
+                    l1 = l1.next;
+                }
+                else
+                {
+                    prevNode.next = l2;
+                    l2 = l2.next;
+                }
+                prevNode = prevNode.next;
+            }
+            if (l1 != null)
+            {
+                prevNode.next = l1;
+            }
+            if (l2 != null)
+            {
+                prevNode.next = l2;
+            }
+            return preHead.next;
+        }
+
         /// <summary>
         /// 迭代法
         /// </summary>
@@ -86,6 +122,30 @@ namespace CodePractice.BasicDataStructure.LinkedList
             }
             prevNode.NextNode = node1 ?? node2;
             return preHead.NextNode;
+        }
+
+        /// <summary>
+        /// 递归法,递归法的思想类似于数学归纳法
+        /// </summary>
+        /// <param name="l1"></param>
+        /// <param name="l2"></param>
+        /// <returns></returns>
+        public static ListNode MergeTwoLists2(ListNode l1, ListNode l2)
+        {
+            if (l1 == null)
+                return l2;
+            if (l2 == null)
+                return l1;
+            if (l1.val < l2.val)
+            {
+                l1.next = MergeTwoLists2(l1.next, l2);
+                return l1;
+            }
+            else
+            {
+                l2.next = MergeTwoLists2(l2.next, l1);
+                return l2;
+            }
         }
 
         public static void Test()
