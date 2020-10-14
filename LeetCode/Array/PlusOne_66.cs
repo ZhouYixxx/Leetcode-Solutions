@@ -84,7 +84,7 @@ namespace CodePractice.LeetCode.Array
 
         public static void Test()
         {
-            var digits = new int[] { 9,9,9,9 };
+            var digits = new int[] { 9,9,8,9 };
             var nums = PlusOne1(digits);
             foreach (var num in nums)
             {
