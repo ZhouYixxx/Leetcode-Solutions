@@ -8,6 +8,7 @@ using CodePractice.BasicDataStructure.Stack_Queue;
 using CodePractice.LeetCode.Array;
 using CodePractice.LeetCode.Stack_Quene;
 using CodePractice.LeetCode.String;
+using CodePractice.LeetCode.Tree;
 using CodePractice.NewCoder.HuaWei;
 
 namespace CodePractice
@@ -70,6 +71,8 @@ namespace CodePractice
 
             #endregion
 
+
+
             #region String
 
             #region 917.仅仅反转字母
@@ -85,6 +88,8 @@ namespace CodePractice
             #endregion
 
             #endregion
+
+
 
             #region Array
 
@@ -120,7 +125,31 @@ namespace CodePractice
 
             #region 66. 加一
 
-            PlusOne_66.Test();
+            //PlusOne_66.Test();
+
+            #endregion
+
+            #endregion
+
+
+
+            #region Tree
+
+            #region 94. 二叉树中序遍历
+
+            //new InorderTraversal_94().Test();
+
+            #endregion
+
+            #region 144. 二叉树前序遍历
+
+            //new PreorderTraversal_144().Test();
+
+            #endregion
+
+            #region 145. 二叉树后序遍历
+
+            new PostorderTraversal_145().Test();
 
             #endregion
 
