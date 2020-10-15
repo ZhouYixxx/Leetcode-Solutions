@@ -7,7 +7,7 @@ namespace CodePractice.LeetCode.Tree
 {
     public class PreorderTraversal_144
     {
-        public IList<int> PreorderTraversal(TreeNode root)
+        public static IList<int> PreorderTraversal(TreeNode root)
         {
             return Preorder_Iterative(root);
 
@@ -21,7 +21,7 @@ namespace CodePractice.LeetCode.Tree
         /// </summary>
         /// <param name="root"></param>
         /// <param name="array"></param>
-        private void Preorder_Recursive(TreeNode root, IList<int> array)
+        private static void Preorder_Recursive(TreeNode root, IList<int> array)
         {
             if (root == null)
             {
@@ -42,7 +42,7 @@ namespace CodePractice.LeetCode.Tree
         /// 前序遍历（迭代）
         /// </summary>n
         /// <param name="root"></param>
-        private List<int> Preorder_Iterative(TreeNode root)
+        private static List<int> Preorder_Iterative(TreeNode root)
         {
             var array = new List<int>();
             var stack = new Stack<TreeNode>();
@@ -67,7 +67,7 @@ namespace CodePractice.LeetCode.Tree
             return array;
         }
 
-        public void Test()
+        public static void Test()
         {
             var root = new TreeNode(5);
             var left1 = new TreeNode(3);

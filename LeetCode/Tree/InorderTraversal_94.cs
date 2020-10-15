@@ -66,18 +66,9 @@ namespace CodePractice.LeetCode.Tree
 
         public void Test()
         {
-            var root = new TreeNode(5);
-            var left1 = new TreeNode(3);
-            root.left = left1;
-            var right1 = new TreeNode(7);
-            root.right = right1;
-            left1.left = new TreeNode(1);
-            left1.right = new TreeNode(4);
-            right1.left = new TreeNode(6);
-            right1.right = new TreeNode(8);
-
-            left1.left.right = new TreeNode(2);
-            var array = InorderTraversal(root);
+            //var vals = new int?[] { 5,3,7,1,4,6,8,2};
+            var node = TreeNodeEx.DeserializeBinaryTreeFromDFS("1, null, 2, 3");
+            var array = InorderTraversal(node);
             foreach (var val in array)
             {
                 Console.Write($"{val},  ");

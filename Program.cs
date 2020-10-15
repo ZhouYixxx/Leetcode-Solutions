@@ -5,6 +5,7 @@ using System.Linq;
 using CodePractice.BasicDataStructure.Array;
 using CodePractice.BasicDataStructure.LinkedList;
 using CodePractice.BasicDataStructure.Stack_Queue;
+using CodePractice.BasicDataStructure.Tree;
 using CodePractice.LeetCode.Array;
 using CodePractice.LeetCode.Stack_Quene;
 using CodePractice.LeetCode.String;
@@ -149,11 +150,13 @@ namespace CodePractice
 
             #region 145. 二叉树后序遍历
 
-            new PostorderTraversal_145().Test();
+            //new PostorderTraversal_145().Test();
 
             #endregion
 
             #endregion
+
+            TreeNodeEx.Test();
 
         }
     }
