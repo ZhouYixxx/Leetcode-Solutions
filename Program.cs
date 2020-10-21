@@ -154,9 +154,20 @@ namespace CodePractice
 
             #endregion
 
+            #region 从字符串生成二叉树/二叉树的序列化与反序列化
+
+            //TreeNodeEx.Test();
+
             #endregion
 
-            TreeNodeEx.Test();
+            #region Offer32.二叉树层序遍历
+
+            new LevelOrderTraversal_Offer_32().Test();
+
+            #endregion
+
+            #endregion
+
 
         }
     }

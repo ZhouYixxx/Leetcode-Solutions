@@ -188,6 +188,7 @@ namespace CodePractice.BasicDataStructure.Tree
             right1.right = new TreeNode(8);
 
             left1.left.right = new TreeNode(2);
+
             var dfs = SerializeBinaryTreeFromDFS(root);
             var node = DeserializeBinaryTreeFromDFS(dfs);
 

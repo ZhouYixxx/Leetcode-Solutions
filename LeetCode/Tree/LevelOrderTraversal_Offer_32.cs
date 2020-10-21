@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CodePractice.BasicDataStructure.Tree;
 
 namespace CodePractice.LeetCode.Tree
@@ -35,6 +36,14 @@ namespace CodePractice.LeetCode.Tree
 
         public void Test()
         {
+            var nodeVals = "5, 3, 7, 1, 4, 6, 8,null, 2";
+            var node = TreeNodeEx.DeserializeBinaryTreeFromBFS(nodeVals);
+            var array = LevelOrder(node);
+            foreach (var item in array)
+            {
+                Console.Write($"{item},");
+            }
+            Console.ReadKey();
         }
     }
 }
