@@ -73,7 +73,6 @@ namespace CodePractice
             #endregion
 
 
-
             #region String
 
             #region 917.仅仅反转字母
@@ -88,8 +87,13 @@ namespace CodePractice
 
             #endregion
 
+            #region 763.划分字母区间
+
+            //new PartitionLabels_763().Test();
+
             #endregion
 
+            #endregion
 
 
             #region Array
@@ -112,12 +116,6 @@ namespace CodePractice
 
             #endregion
 
-            #region 1. 两数之和
-
-            //TwoSum_001.Test();
-
-            #endregion
-
             #region 283. 移动零
 
             //MoveZeroes_283.Test();
@@ -127,6 +125,18 @@ namespace CodePractice
             #region 66. 加一
 
             //PlusOne_66.Test();
+
+            #endregion
+
+            #region 1. 两数之和
+
+            //TwoSum_001.Test();
+
+            #endregion
+
+            #region 15. 三数之和
+
+            new ThreeSum_015().Test();
 
             #endregion
 
@@ -162,7 +172,7 @@ namespace CodePractice
 
             #region Offer32.二叉树层序遍历
 
-            new LevelOrderTraversal_Offer_32().Test();
+            //new LevelOrderTraversal_Offer_32().Test();
 
             #endregion
 
