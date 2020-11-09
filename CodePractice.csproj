@@ -8,7 +8,6 @@
   <ItemGroup>
     <Folder Include="BasicDataStructure\Graph\" />
     <Folder Include="LeetCode\Graph\" />
-    <Folder Include="LeetCode\LinkedList\" />
   </ItemGroup>
 
 </Project>

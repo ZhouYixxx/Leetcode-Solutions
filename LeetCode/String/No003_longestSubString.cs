@@ -20,7 +20,7 @@
  */
 namespace CodePractice.LeetCode.String
 {
-    public class No003_longestSubString
+    public static class No003_longestSubString
     {
         public static int LongestSubString(string s)
         {

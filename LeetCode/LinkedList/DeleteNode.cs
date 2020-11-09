@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using CodePractice.BasicDataStructure.LinkedList;
 
-namespace CodePractice.BasicDataStructure.LinkedList
+namespace CodePractice.LeetCode.LinkedList
 {
     public class DeleteNode
     {
@@ -11,7 +11,7 @@ namespace CodePractice.BasicDataStructure.LinkedList
         /// <typeparam name="T"></typeparam>
         /// <param name="head"></param>
         /// <param name="n"></param>
-        public static void DeleteAt<T>(Node<T> head,int n)
+        public static void DeleteAt<T>(Node<T> head, int n)
         {
             if (n <= 0)
                 return;

@@ -7,6 +7,7 @@ using CodePractice.BasicDataStructure.LinkedList;
 using CodePractice.BasicDataStructure.Stack_Queue;
 using CodePractice.BasicDataStructure.Tree;
 using CodePractice.LeetCode.Array;
+using CodePractice.LeetCode.Bit;
 using CodePractice.LeetCode.Stack_Quene;
 using CodePractice.LeetCode.String;
 using CodePractice.LeetCode.Tree;
@@ -18,6 +19,8 @@ namespace CodePractice
     {
         static void Main(string[] args)
         {
+
+
             //No08_MergeDic.MergeDic();
 
             #region No346_MovingAverage
@@ -37,148 +40,37 @@ namespace CodePractice
 
             #endregion
 
+            //new SortByBits_1356().Test();
+
             #region LinkedList
 
-            #region 实现一个动态扩容数组
-
-            //DynamicArray<int>.Test();
+            LeetCode.LinkedList.ExcuteProgram.Excute();
 
             #endregion
-
-            #region 反转链表
-
-            //ReverseLinkedList.Test();
-
-            #endregion
-
-            #region 链表中环的检测
-
-            //CheckCircle.Test();
-
-            #endregion
-
-            #region 合并两个有序链表
-
-            //MergeTwoLists.Test();
-
-            #endregion
-
-            #region 删除链表倒数第N个元素
-
-            //DeleteNode.Test();
-
-
-            #endregion
-
-            #endregion
-
 
             #region String
 
-            #region 917.仅仅反转字母
-
-            //ReverseOnlyLetters_917.Test();
+            LeetCode.String.ExcuteProgram.Excute();
 
             #endregion
-
-            #region 50面试.第一个只出现一次的字符
-
-            //FirstUniqChar_50Interview.Test();
-
-            #endregion
-
-            #region 763.划分字母区间
-
-            //new PartitionLabels_763().Test();
-
-            #endregion
-
-            #endregion
-
 
             #region Array
 
-            #region 26.去除有序数组重复元素
-
-            //RemoveDuplicates_26.Test();
+            LeetCode.Array.ExcuteProgram.Excute();
 
             #endregion
-
-            #region 977.有序数组的平方
-
-            //SquaresSortedArray_977.Test();
-
-            #endregion
-
-            #region 88. 合并两个有序数组
-
-            //_MergeSortedArray_88.Test();
-
-            #endregion
-
-            #region 283. 移动零
-
-            //MoveZeroes_283.Test();
-
-            #endregion
-
-            #region 66. 加一
-
-            //PlusOne_66.Test();
-
-            #endregion
-
-            #region 1. 两数之和
-
-            //TwoSum_001.Test();
-
-            #endregion
-
-            #region 15. 三数之和
-
-            new ThreeSum_015().Test();
-
-            #endregion
-
-            #endregion
-
-
 
             #region Tree
 
-            #region 94. 二叉树中序遍历
-
-            //new InorderTraversal_94().Test();
+            LeetCode.Tree.ExcuteProgram.Excute();
 
             #endregion
 
-            #region 144. 二叉树前序遍历
+            #region Math
 
-            //new PreorderTraversal_144().Test();
-
-            #endregion
-
-            #region 145. 二叉树后序遍历
-
-            //new PostorderTraversal_145().Test();
+            LeetCode.Math.ExcuteProgram.Excute();
 
             #endregion
-
-            #region 从字符串生成二叉树/二叉树的序列化与反序列化
-
-            //TreeNodeEx.Test();
-
-            #endregion
-
-            #region Offer32.二叉树层序遍历
-
-            //new LevelOrderTraversal_Offer_32().Test();
-
-            #endregion
-
-            #endregion
-
-
         }
     }
 }

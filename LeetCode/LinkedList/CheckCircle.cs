@@ -1,6 +1,7 @@
 ﻿using System;
+using CodePractice.BasicDataStructure.LinkedList;
 
-namespace CodePractice.BasicDataStructure.LinkedList
+namespace CodePractice.LeetCode.LinkedList
 {
     public class CheckCircle
     {

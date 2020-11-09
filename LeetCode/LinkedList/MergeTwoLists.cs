@@ -1,14 +1,15 @@
 ﻿using System;
+using CodePractice.BasicDataStructure.LinkedList;
 
-namespace CodePractice.BasicDataStructure.LinkedList
+namespace CodePractice.LeetCode.LinkedList
 {
-
     public class ListNode
     {
         public int val;
         public ListNode next;
         public ListNode(int x) { val = x; }
     }
+
     public class MergeTwoLists
     {
         public ListNode MergeTwoLists1(ListNode l1, ListNode l2)
@@ -46,10 +47,10 @@ namespace CodePractice.BasicDataStructure.LinkedList
         /// <param name="node1"></param>
         /// <param name="node2"></param>
         /// <returns></returns>
-        public static Node<int> Merge(Node<int> node1, Node<int> node2) 
+        public static Node<int> Merge(Node<int> node1, Node<int> node2)
         {
             Node<int> hNode = node1.Value >= node2.Value ? node2 : node1;
-            while (node1 !=null && node2 != null)
+            while (node1 != null && node2 != null)
             {
                 if (node1.Value <= node2.Value)
                 {
@@ -72,7 +73,7 @@ namespace CodePractice.BasicDataStructure.LinkedList
                     continue;
                 }
 
-                if (node2.Value <= node1.Value )
+                if (node2.Value <= node1.Value)
                 {
                     if (node2.NextNode != null && node2.NextNode.Value >= node1.Value)
                     {
