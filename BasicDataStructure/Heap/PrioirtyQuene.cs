@@ -40,6 +40,10 @@ namespace CodePractice.BasicDataStructure.Heap
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ascending">ascending=true说明从小到大排列，优先队列每次弹出最小值</param>
         public PrioirtyQuene(bool ascending)
         {
             this.ascending = ascending;
@@ -58,6 +62,10 @@ namespace CodePractice.BasicDataStructure.Heap
             }
         }
 
+        /// <summary>
+        /// 插入新元素
+        /// </summary>
+        /// <param name="value"></param>
         public void Push(T value)
         {
             if (ascending)
@@ -70,6 +78,10 @@ namespace CodePractice.BasicDataStructure.Heap
             }
         }
 
+        /// <summary>
+        /// 弹出队首元素
+        /// </summary>
+        /// <param name="value"></param>
         public void Pop(T value)
         {
             if (Count >= Capacity)
@@ -86,7 +98,11 @@ namespace CodePractice.BasicDataStructure.Heap
             }
         }
 
-        public T Peek(T value)
+        /// <summary>
+        /// 弹出队首元素并返回该元素
+        /// </summary>
+        /// <returns></returns>
+        public T Peek()
         {
             if (Count >= Capacity)
             {

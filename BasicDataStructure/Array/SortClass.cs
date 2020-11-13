@@ -154,15 +154,21 @@ namespace CodePractice.BasicDataStructure.Array
         /// <param name="arrInts"></param>
         public static void HeapSort(int[] arrInts)
         {
-            var minHeap = new MinHeap<int>(arrInts);
+            //var minHeap = new MinHeap<int>(arrInts);
             int index = arrInts.Length;
-            int i = 0;
+            //int i = 0;
+            //while (index >= 1)
+            //{
+            //    //移除堆顶元素，然后堆化
+            //    arrInts[i] = minHeap.PeekMin();
+            //    i++;
+            //    index--;
+            //}
+            var maxHeap = new MaxHeap<int>(arrInts);
             while (index >= 1)
             {
-                //移除堆顶元素，然后堆化
-                arrInts[i] = minHeap.PeekMin();
-                i++;
                 index--;
+                arrInts[index] = maxHeap.PeekMax();
             }
             //minHeap.ShowHeap();
         }
