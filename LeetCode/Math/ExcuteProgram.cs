@@ -15,6 +15,12 @@
             //(new ProductAndSum_1281()).SubtractProductAndSum(5);
 
             #endregion
+
+            #region 求中位数（维护大小堆）
+
+            (new MedianFinder_295()).Test();
+
+            #endregion
         }
     }
 }
