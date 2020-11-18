@@ -18,6 +18,12 @@ namespace CodePractice.LeetCode.Array
 
             #endregion
 
+            #region 4. 两个有序数组的第K小元素（求中位数）
+
+            new FindMedianSortedArrays_004().Test();
+
+            #endregion
+
             #region 15. 三数之和
 
             //new ThreeSum_015().Test();
@@ -32,7 +38,7 @@ namespace CodePractice.LeetCode.Array
 
             #region 56.合并区间
 
-            new MergeInterval_56().Test();
+            //new MergeInterval_56().Test();
 
             #endregion
 

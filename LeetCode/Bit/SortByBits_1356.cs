@@ -20,6 +20,7 @@ namespace CodePractice.LeetCode.Bit
             int count = 0;
             while (number > 0)
             {
+                //n与n-1取与运算，一次可以去掉一个1
                 number = number & (number - 1);
                 count++;
             }
