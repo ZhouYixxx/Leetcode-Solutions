@@ -8,7 +8,7 @@ namespace CodePractice.LeetCode.Array
         {
             #region 排序算法
 
-            SortClass.Test();
+            //SortClass.Test();
 
             #endregion
 
@@ -30,6 +30,12 @@ namespace CodePractice.LeetCode.Array
 
             #endregion
 
+            #region 56.合并区间
+
+            new MergeInterval_56().Test();
+
+            #endregion
+
             #region 57. 插入区间
 
             //new InsertInterval__57().Test();
@@ -45,6 +51,18 @@ namespace CodePractice.LeetCode.Array
             #region 88. 合并两个有序数组
 
             //_MergeSortedArray_88.Test();
+
+            #endregion
+
+            #region 134.环形加油站
+
+            //new GasStation_134().Test();
+
+            #endregion
+
+            #region 215.数组中的第K个最大元素
+
+            //new FindKthLargest_215().Test();
 
             #endregion
 

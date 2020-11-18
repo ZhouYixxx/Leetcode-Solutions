@@ -59,7 +59,7 @@ namespace CodePractice.BasicDataStructure.Array
                     j++;
                     continue;
                 }
-                //if arrInts[i]<pivot, swap i,j
+                //if arrInts[j]<pivot, swap i,j
                 var temp = arrInts[i];
                 arrInts[i] = arrInts[j];
                 arrInts[j] = temp;
