@@ -3,12 +3,6 @@ using CodePractice.BasicDataStructure.LinkedList;
 
 namespace CodePractice.LeetCode.LinkedList
 {
-    public class ListNode
-    {
-        public int val;
-        public ListNode next;
-        public ListNode(int x) { val = x; }
-    }
 
     public class MergeTwoLists
     {

@@ -8,7 +8,7 @@ namespace CodePractice.LeetCode.Array
         {
             #region 排序算法
 
-            //SortClass.Test();
+            //new SortClass();
 
             #endregion
 

@@ -33,6 +33,18 @@
             //DeleteNode.Test();
 
             #endregion
+
+            #region 插入排序链表
+
+            //new InsertionSortList_147();
+
+            #endregion
+
+            #region 排序链表
+
+            new SortLinekdList_148();
+
+            #endregion
         }
     }
 }

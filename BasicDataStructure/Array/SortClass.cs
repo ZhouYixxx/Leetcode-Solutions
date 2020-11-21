@@ -1,21 +1,54 @@
 ﻿using System;
+using System.Globalization;
 using System.Xml.Xsl;
 using CodePractice.BasicDataStructure.Heap;
+using CodePractice.Core;
 
 namespace CodePractice.BasicDataStructure.Array
 {
-    public class SortClass
+    public class SortClass : LeetCodeBase
     {
-        public static void Test()
+        public SortClass() : base("SortClass")
         {
-            var array = new int[] {6, 11, 3, 9, 8, 2, 16, 33, 150, 27,72};
-            HeapSort(array);
+            Test();
+        }
+
+        public void Test()
+        {
+            var array = new int[] { 6, 11, 3, 9, 8, 2, 16, 33, 150, 27, 72 };
+            InsertSort(array);
             foreach (var value in array)
             {
-                Console.Write(value+", ");
+                Console.Write(value + ", ");
             }
             Console.ReadKey();
         }
+
+        #region InsertSort
+
+        public static void InsertSort(int[] nums)
+        {
+            for (int i = 1; i < nums.Length; i++)
+            {
+                int index = 0;
+                var temp = nums[i];
+                for (int j = i-1; j >= 0 ; j--)
+                {
+                    //后移一位
+                    if (nums[j] > temp)
+                    {
+                        nums[j + 1] = nums[j];
+                        continue;
+                    }
+                    //找到要插入的位置，不要再往下遍历
+                    index = j + 1;
+                    break;
+                }
+                nums[index] = temp;
+            }
+        }
+
+        #endregion
 
         #region QucikSort
 
