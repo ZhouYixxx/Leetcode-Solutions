@@ -71,6 +71,12 @@ namespace CodePractice
             LeetCode.Math.ExcuteProgram.Excute();
 
             #endregion
+
+            #region Greedy
+
+            LeetCode.Greedy.ExcuteProgram.Excute();
+
+            #endregion
         }
     }
 }

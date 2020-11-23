@@ -77,7 +77,6 @@ namespace CodePractice.LeetCode.Tree
             left1.right = new TreeNode(4);
             right1.left = new TreeNode(6);
             right1.right = new TreeNode(8);
-
             left1.left.right = new TreeNode(2);
             var array = PostorderTraversal(root);
             foreach (var val in array)

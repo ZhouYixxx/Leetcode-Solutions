@@ -42,7 +42,13 @@
 
             #region 排序链表
 
-            new SortLinekdList_148();
+            //new SortLinekdList_148();
+
+            #endregion
+
+            #region 合并K个升序链表
+
+            //new MergeKLists_23();
 
             #endregion
         }

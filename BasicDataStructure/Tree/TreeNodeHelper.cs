@@ -8,7 +8,7 @@ namespace CodePractice.BasicDataStructure.Tree
     /// <summary>
     /// 基于层序遍历实现
     /// </summary>
-    public class TreeNodeEx
+    public class TreeNodeHelper
     {
         #region 二叉树序列化(基于前序遍历/DFS)
 
@@ -175,6 +175,62 @@ namespace CodePractice.BasicDataStructure.Tree
 
         #endregion
 
+        #region 展示二叉树
+
+        internal static void ShowBinaryTree(TreeNode root)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            var height = GetHeight(root);
+            var node = root;
+            Console.WriteLine("Current Binary Tree:");
+            var top = Console.CursorTop;
+            Console.SetCursorPosition((int) Math.Pow(2, height-1), top);
+            var left = Console.CursorLeft;
+            ShowNode(node, left, top);
+        }
+
+        private static void ShowNode(TreeNode node, int left, int top)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            Console.SetCursorPosition(left, top);
+            Console.Write(node.val);
+            if (node.left != null)
+            {
+                Console.SetCursorPosition(left-1, top+1);
+                Console.Write("/");
+            }
+            if (node.right != null)
+            {
+                Console.SetCursorPosition(left + 1, top + 1);
+                Console.Write("\\");
+            }
+            ShowNode(node.left, left - 2, top + 2);
+            ShowNode(node.right, left + 2, top + 2);
+        }
+
+        #endregion
+
+        #region GetHeight
+
+        internal static int GetHeight(TreeNode root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            var left = GetHeight(root.left);
+            var right = GetHeight(root.right);
+            return Math.Max(left, right) + 1;
+        }
+
+        #endregion
+
         public static void Test()
         {
             var root = new TreeNode(5);
@@ -188,7 +244,8 @@ namespace CodePractice.BasicDataStructure.Tree
             right1.right = new TreeNode(8);
 
             left1.left.right = new TreeNode(2);
-
+            ShowBinaryTree(root);
+            Console.ReadKey();
             var dfs = SerializeBinaryTreeFromDFS(root);
             var node = DeserializeBinaryTreeFromDFS(dfs);
 

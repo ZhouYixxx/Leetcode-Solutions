@@ -1,13 +1,24 @@
 ﻿using System;
 using System.ComponentModel;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
     /// <summary>
     /// 寻找两个有序数组的中位数
     /// </summary>
-    public class FindMedianSortedArrays_004
+    public class FindMedianSortedArrays_004 : LeetCodeBase
     {
+        public void Test()
+        {
+            //var nums1 = new int[] { 1, 3, 4, 9 };
+            //var nums2 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            var nums1 = new int[] { 1 };
+            var nums2 = new int[] { 2, 3, 4, 5, 6 };
+            Console.WriteLine(FindMedianSortedArrays(nums1, nums2));
+            Console.ReadKey();
+        }
+
         public double FindMedianSortedArrays(int[] nums1, int[] nums2)
         {
             var totalLength = nums1.Length + nums2.Length;
@@ -127,15 +138,8 @@ namespace CodePractice.LeetCode.Array
                 }
             }
         }
-
-        public void Test()
+        public FindMedianSortedArrays_004() : base("FindMedianSortedArrays_004")
         {
-            //var nums1 = new int[] { 1, 3, 4, 9 };
-            //var nums2 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            var nums1 = new int[] { 1 };
-            var nums2 = new int[] { 2,3, 4,5,6 };
-            Console.WriteLine(FindMedianSortedArrays(nums1, nums2));
-            Console.ReadKey();
         }
     }
 }

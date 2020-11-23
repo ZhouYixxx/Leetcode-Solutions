@@ -7,6 +7,10 @@ namespace CodePractice.BasicDataStructure.LinkedList
     {
         public static ListNode InitLinkedListByArray(int[] nums)
         {
+            if (nums.Length == 0)
+            {
+                return null;
+            }
             var head = new ListNode(nums[0]);
             var node = head;
             for (int i = 1; i < nums.Length; i++)

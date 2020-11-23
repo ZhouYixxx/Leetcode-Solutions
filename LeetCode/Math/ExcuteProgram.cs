@@ -18,7 +18,19 @@
 
             #region 求中位数（维护大小堆）
 
-            (new MedianFinder_295()).Test();
+            //(new MedianFinder_295()).Test();
+
+            #endregion
+
+            #region 矩阵置0
+
+            //new SetMatrixZeroes_73();
+
+            #endregion
+
+            #region 求平方根
+
+            new Sqrt_69();
 
             #endregion
         }

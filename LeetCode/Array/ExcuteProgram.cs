@@ -20,7 +20,7 @@ namespace CodePractice.LeetCode.Array
 
             #region 4. 两个有序数组的第K小元素（求中位数）
 
-            new FindMedianSortedArrays_004().Test();
+            //new FindMedianSortedArrays_004().Test();
 
             #endregion
 

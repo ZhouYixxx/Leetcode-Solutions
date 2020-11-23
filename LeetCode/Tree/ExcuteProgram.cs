@@ -24,7 +24,7 @@
 
             #region 从字符串生成二叉树/二叉树的序列化与反序列化
 
-            //TreeNodeEx.Test();
+            //TreeNodeHelper.Test();
 
             #endregion
 

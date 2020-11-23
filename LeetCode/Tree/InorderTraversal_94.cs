@@ -67,7 +67,7 @@ namespace CodePractice.LeetCode.Tree
         public void Test()
         {
             //var vals = new int?[] { 5,3,7,1,4,6,8,2};
-            var node = TreeNodeEx.DeserializeBinaryTreeFromDFS("1, null, 2, 3");
+            var node = TreeNodeHelper.DeserializeBinaryTreeFromDFS("1, null, 2, 3");
             var array = InorderTraversal(node);
             foreach (var val in array)
             {

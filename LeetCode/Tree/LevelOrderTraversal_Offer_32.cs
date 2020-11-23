@@ -37,7 +37,7 @@ namespace CodePractice.LeetCode.Tree
         public void Test()
         {
             var nodeVals = "5, 3, 7, 1, 4, 6, 8,null, 2";
-            var node = TreeNodeEx.DeserializeBinaryTreeFromBFS(nodeVals);
+            var node = TreeNodeHelper.DeserializeBinaryTreeFromBFS(nodeVals);
             var array = LevelOrder(node);
             foreach (var item in array)
             {

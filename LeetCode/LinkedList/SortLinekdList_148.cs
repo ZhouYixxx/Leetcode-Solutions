@@ -42,7 +42,7 @@ namespace CodePractice.LeetCode.LinkedList
         }
 
         /// <summary>
-        /// O(NlogN)算法
+        /// O(NLogN)算法
         /// </summary>
         /// <param name="head"></param>
         /// <returns></returns>
