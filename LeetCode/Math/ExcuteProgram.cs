@@ -30,7 +30,7 @@
 
             #region 求平方根
 
-            new Sqrt_69();
+            //new Sqrt_69();
 
             #endregion
         }

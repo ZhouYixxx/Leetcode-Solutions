@@ -1,4 +1,6 @@
-﻿using CodePractice.BasicDataStructure.Array;
+﻿using System;
+using System.Linq.Expressions;
+using CodePractice.BasicDataStructure.Array;
 
 namespace CodePractice.LeetCode.Array
 {
@@ -9,6 +11,12 @@ namespace CodePractice.LeetCode.Array
             #region 排序算法
 
             //new SortClass();
+
+            #endregion
+
+            #region 拼多多试题
+
+            //new PDD_2020();
 
             #endregion
 
@@ -63,6 +71,12 @@ namespace CodePractice.LeetCode.Array
             #region 134.环形加油站
 
             //new GasStation_134().Test();
+
+            #endregion
+
+            #region 164.最大间距（桶排序问题）
+
+            new MaxiumGap_164();
 
             #endregion
 
