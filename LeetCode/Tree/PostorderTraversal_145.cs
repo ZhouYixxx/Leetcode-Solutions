@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using CodePractice.BasicDataStructure.Tree;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Tree
 {
-    public class PostorderTraversal_145
+    public class PostorderTraversal_145 : LeetCodeBase
     {
         public IList<int> PostorderTraversal(TreeNode root)
         {
@@ -84,6 +85,11 @@ namespace CodePractice.LeetCode.Tree
                 Console.Write($"{val},  ");
             }
             Console.ReadKey();
+        }
+
+        public PostorderTraversal_145() : base("PostorderTraversal_145")
+        {
+            Test();
         }
     }
 }

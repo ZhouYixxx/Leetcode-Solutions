@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class GasStation_134
+    public class GasStation_134 : LeetCodeBase
     {
         public void Test()
         {
@@ -35,6 +36,11 @@ namespace CodePractice.LeetCode.Array
             }
             //sum<0说明总油量小于总消耗，肯定不能闭环
             return sum < 0 ? -1 : start;
+        }
+
+        public GasStation_134() : base("GasStation_134")
+        {
+            Test();
         }
     }
 }

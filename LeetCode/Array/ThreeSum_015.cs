@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CodePractice.Core;
+
 //特判，对于数组长度 n，如果数组为 null 或者数组长度小于 3，返回 [][]。
 //对数组进行排序。
 //遍历排序后数组：
@@ -13,7 +15,7 @@ using System.Linq;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class ThreeSum_015
+    public class ThreeSum_015 : LeetCodeBase
     {
         /// <summary>
         /// 三数之和
@@ -86,6 +88,11 @@ namespace CodePractice.LeetCode.Array
                 Console.WriteLine();
             }
             Console.ReadKey();
+        }
+
+        public ThreeSum_015() : base("ThreeSum_015")
+        {
+            Test();
         }
     }
 }

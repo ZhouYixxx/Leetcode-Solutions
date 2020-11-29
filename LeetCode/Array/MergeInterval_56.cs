@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class MergeInterval_56
+    public class MergeInterval_56 : LeetCodeBase
     {
         public int[][] Merge(int[][] intervals)
         {
@@ -57,6 +58,11 @@ namespace CodePractice.LeetCode.Array
                 Console.WriteLine($"{interval[0]}, {interval[1]}");
             }
             Console.ReadKey();
+        }
+
+        public MergeInterval_56() : base("MergeInterval_56")
+        {
+            Test();
         }
     }
 }

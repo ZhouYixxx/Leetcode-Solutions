@@ -1,9 +1,10 @@
 ﻿using System;
 using CodePractice.BasicDataStructure.LinkedList;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.LinkedList
 {
-    public class CheckCircle
+    public class CheckCircle : LeetCodeBase
     {
 
         public static void Test()
@@ -43,6 +44,11 @@ namespace CodePractice.LeetCode.LinkedList
                 }
             }
             return false;
+        }
+
+        public CheckCircle() : base("CheckCircle")
+        {
+            Test();
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.String
 {
-    public class PartitionLabels_763
+    public class PartitionLabels_763 : LeetCodeBase
     {
         public IList<int> PartitionLabels(string S)
         {
@@ -44,6 +45,11 @@ namespace CodePractice.LeetCode.String
                 Console.Write($"{item},");
             }
             Console.ReadKey();
+        }
+
+        public PartitionLabels_763() : base("PartitionLabels_763")
+        {
+            Test();
         }
     }
 }

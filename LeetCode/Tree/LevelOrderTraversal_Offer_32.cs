@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using CodePractice.BasicDataStructure.Tree;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Tree
 {
     /// <summary>
     /// 二叉树层序遍历（BFS）
     /// </summary>
-    public class LevelOrderTraversal_Offer_32
+    public class LevelOrderTraversal_Offer_32 : LeetCodeBase
     {
         public int[] LevelOrder(TreeNode root)
         {
@@ -44,6 +45,11 @@ namespace CodePractice.LeetCode.Tree
                 Console.Write($"{item},");
             }
             Console.ReadKey();
+        }
+
+        public LevelOrderTraversal_Offer_32() : base("LevelOrderTraversal_Offer_32")
+        {
+            Test();
         }
     }
 }

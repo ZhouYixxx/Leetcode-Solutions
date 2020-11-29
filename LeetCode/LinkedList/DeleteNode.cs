@@ -1,9 +1,10 @@
 ﻿using System;
 using CodePractice.BasicDataStructure.LinkedList;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.LinkedList
 {
-    public class DeleteNode
+    public class DeleteNode : LeetCodeBase
     {
         /// <summary>
         /// 删除倒数第n个元素（一次遍历）
@@ -78,6 +79,11 @@ namespace CodePractice.LeetCode.LinkedList
             }
             Console.Write("null");
             Console.ReadKey();
+        }
+
+        public DeleteNode() : base("DeleteNode")
+        {
+            Test();
         }
     }
 }

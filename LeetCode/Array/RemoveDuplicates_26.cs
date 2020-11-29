@@ -10,10 +10,11 @@
 你不需要考虑数组中超出新长度后面的元素。
  */
 using System;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class RemoveDuplicates_26
+    public class RemoveDuplicates_26 : LeetCodeBase
     {
         private static int RemoveDuplicates(int[] nums)
         {
@@ -51,6 +52,11 @@ namespace CodePractice.LeetCode.Array
                 Console.Write($"{nums[i]}, ");
             }
             Console.ReadKey();
+        }
+
+        public RemoveDuplicates_26() : base("RemoveDuplicates_26")
+        {
+            Test();
         }
     }
 }

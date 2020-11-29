@@ -32,6 +32,13 @@ namespace CodePractice.LeetCode.Array
 
             #endregion
 
+            #region 300. 最长上升子序列
+
+            //new LongestIncreasingSubsequence_300().Test();
+
+            #endregion
+
+
             #region 15. 三数之和
 
             //new ThreeSum_015().Test();
@@ -76,7 +83,7 @@ namespace CodePractice.LeetCode.Array
 
             #region 164.最大间距（桶排序问题）
 
-            new MaxiumGap_164();
+            //new MaxiumGap_164();
 
             #endregion
 

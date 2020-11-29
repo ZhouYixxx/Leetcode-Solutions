@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Bit
 {
-    public class SortByBits_1356
+    public class SortByBits_1356 : LeetCodeBase
     {
         public int[] SortByBits(int[] arr)
         {
@@ -36,6 +37,11 @@ namespace CodePractice.LeetCode.Bit
                 Console.Write(value+", ");
             }
             Console.ReadKey();
+        }
+
+        public SortByBits_1356() : base("SortByBits_1356")
+        {
+            Test();
         }
     }
 }

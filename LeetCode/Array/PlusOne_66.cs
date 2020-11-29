@@ -10,10 +10,11 @@
 解释: 输入数组表示数字 123。
  */
 using System;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class PlusOne_66
+    public class PlusOne_66 : LeetCodeBase
     {
         /// <summary>
         /// 方法一：用一个新数组ans保存结果，时间复杂度O(n)
@@ -91,6 +92,11 @@ namespace CodePractice.LeetCode.Array
                 Console.Write(num + "  ");
             }
             Console.ReadKey();
+        }
+
+        public PlusOne_66() : base("PlusOne_66")
+        {
+            Test();
         }
     }
 }

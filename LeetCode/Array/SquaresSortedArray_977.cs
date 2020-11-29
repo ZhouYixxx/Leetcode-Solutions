@@ -12,10 +12,11 @@
  */
 
 using System;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class SquaresSortedArray_977
+    public class SquaresSortedArray_977 : LeetCodeBase
     {
         //双指针法，两个指针分别指向数组的左右，时间复杂度O(n)，空间复杂度O(1)
         public static int[] SortedSquares(int[] A)
@@ -58,6 +59,11 @@ namespace CodePractice.LeetCode.Array
                 Console.Write(ans[i] + " ");
             }
             Console.ReadKey();
+        }
+
+        public SquaresSortedArray_977() : base("SquaresSortedArray_977")
+        {
+            Test();
         }
     }
 }

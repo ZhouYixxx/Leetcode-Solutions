@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class ArrayIntersection_349
+    public class ArrayIntersection_349 : LeetCodeBase
     {
         public int[] Intersection(int[] nums1, int[] nums2)
         {
@@ -40,6 +41,11 @@ namespace CodePractice.LeetCode.Array
                 Console.Write(num+",");
             }
             Console.ReadKey();
+        }
+
+        public ArrayIntersection_349() : base("ArrayIntersection_349")
+        {
+            Test();
         }
     }
 }

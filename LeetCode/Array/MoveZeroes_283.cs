@@ -8,10 +8,11 @@
  */
 
 using System;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class MoveZeroes_283
+    public class MoveZeroes_283 : LeetCodeBase
     {
         public static void MoveZeroes(int[] nums)
         {
@@ -46,6 +47,11 @@ namespace CodePractice.LeetCode.Array
                 Console.Write(num+"  ");
             }
             Console.ReadKey();
+        }
+
+        public MoveZeroes_283() : base("MoveZeroes_283")
+        {
+            Test();
         }
     }
 }

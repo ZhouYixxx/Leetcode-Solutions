@@ -1,11 +1,12 @@
 ﻿using System;
 using CodePractice.BasicDataStructure.Heap;
+using CodePractice.Core;
 
 //问题进阶：如果所有数据都在[0,100]区间？此时不需要维护堆，用一个数组arr[101]去存储每个数字出现的次数，遍历累加一次获得总个数，
 //除以二得到要找的数的位置p，再遍历一次找到p，时间复杂度O(1)
 namespace CodePractice.LeetCode.Math
 {
-    public class MedianFinder_295
+    public class MedianFinder_295 : LeetCodeBase
     {
         public void Test()
         {
@@ -18,6 +19,11 @@ namespace CodePractice.LeetCode.Math
             var m = obj.FindMedian();
             Console.WriteLine(m);
             Console.ReadKey();
+        }
+
+        public MedianFinder_295() : base("MedianFinder_295")
+        {
+            Test();
         }
     }
     /// <summary>

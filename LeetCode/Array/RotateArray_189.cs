@@ -15,10 +15,11 @@
  */
 
 using System.Collections;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class RotateArray_189
+    public class RotateArray_189 : LeetCodeBase
     {
         /// <summary>
         /// 暴力法，k=1时的情况很容易实现，然后循环k次这种情况即可。时间复杂度O(nk),空间复杂度O(1)
@@ -93,6 +94,11 @@ namespace CodePractice.LeetCode.Array
                 start++;
                 end--;
             }
+        }
+
+        public RotateArray_189() : base("RotateArray_189")
+        {
+            
         }
     }
 }

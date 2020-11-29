@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel.Design;
 using System.Net.NetworkInformation;
+using CodePractice.Core;
 using Console = System.Console;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class FindKthLargest_215
+    public class FindKthLargest_215 : LeetCodeBase
     {
         public void Test()
         {
@@ -75,6 +76,11 @@ namespace CodePractice.LeetCode.Array
             nums[end] = nums[i];
             nums[i] = pivot;
             return i;
+        }
+
+        public FindKthLargest_215() : base("FindKthLargest_215")
+        {
+            Test();
         }
     }
 }

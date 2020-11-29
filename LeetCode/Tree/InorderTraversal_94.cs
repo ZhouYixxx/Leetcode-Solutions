@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CodePractice.BasicDataStructure.Tree;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Tree
 {
-    public class InorderTraversal_94
+    public class InorderTraversal_94 : LeetCodeBase
     {
         public  IList<int> InorderTraversal(TreeNode root)
         {
@@ -74,6 +75,11 @@ namespace CodePractice.LeetCode.Tree
                 Console.Write($"{val},  ");
             }
             Console.ReadKey();
+        }
+
+        public InorderTraversal_94() : base("InorderTraversal_94")
+        {
+            Test();
         }
     }
 }

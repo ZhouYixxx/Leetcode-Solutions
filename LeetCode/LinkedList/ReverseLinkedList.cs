@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using CodePractice.BasicDataStructure.LinkedList;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.LinkedList
 {
     /// <summary>
     /// 链表反转
     /// </summary>
-    public class ReverseLinkedList
+    public class ReverseLinkedList : LeetCodeBase
     {
         /// <summary>
         /// 测试
@@ -93,6 +94,11 @@ namespace CodePractice.LeetCode.LinkedList
             }
             headNode.NextNode = null;
             return curNode;
+        }
+
+        public ReverseLinkedList() : base("ReverseLinkedList")
+        {
+            Test();
         }
     }
 }

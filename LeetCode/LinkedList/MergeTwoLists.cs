@@ -1,10 +1,11 @@
 ﻿using System;
 using CodePractice.BasicDataStructure.LinkedList;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.LinkedList
 {
 
-    public class MergeTwoLists
+    public class MergeTwoLists : LeetCodeBase
     {
         public ListNode MergeTwoLists1(ListNode l1, ListNode l2)
         {
@@ -169,6 +170,11 @@ namespace CodePractice.LeetCode.LinkedList
                 hNode = hNode.NextNode;
             }
             Console.ReadKey();
+        }
+
+        public MergeTwoLists() : base("MergeTwoLists")
+        {
+            Test();
         }
     }
 }

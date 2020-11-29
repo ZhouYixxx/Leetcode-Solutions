@@ -12,9 +12,11 @@
 
  */
 
+using CodePractice.Core;
+
 namespace CodePractice.LeetCode.Math
 {
-    public class ProductAndSum_1281
+    public class ProductAndSum_1281 : LeetCodeBase
     {
         public int SubtractProductAndSum(int n)
         {
@@ -29,6 +31,10 @@ namespace CodePractice.LeetCode.Math
                 n /= 10;
             }
             return product - sum;
+        }
+
+        public ProductAndSum_1281() : base("ProductAndSum_1281")
+        {
         }
     }
 }

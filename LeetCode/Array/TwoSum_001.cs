@@ -11,10 +11,11 @@
 
 using System;
 using System.Collections.Generic;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class TwoSum_001
+    public class TwoSum_001 : LeetCodeBase
     {
         public static int[] TwoSum(int[] nums, int target)
         {
@@ -39,6 +40,11 @@ namespace CodePractice.LeetCode.Array
             var result = TwoSum(nums, target);
             Console.WriteLine($"{result[0]};{result[1]}");
             Console.ReadKey();
+        }
+
+        public TwoSum_001() : base("TwoSum_001")
+        {
+            Test();
         }
     }
 }

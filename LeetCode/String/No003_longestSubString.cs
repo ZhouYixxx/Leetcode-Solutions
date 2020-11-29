@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using CodePractice.Core;
+
 /*
 003.无重复字符的最长子串
 
@@ -20,7 +22,7 @@
  */
 namespace CodePractice.LeetCode.String
 {
-    public static class No003_longestSubString
+    public class No003_longestSubString : LeetCodeBase
     {
         public static int LongestSubString(string s)
         {
@@ -91,6 +93,10 @@ namespace CodePractice.LeetCode.String
                 }
             }
             return length;
+        }
+
+        public No003_longestSubString() : base("No003_longestSubString")
+        {
         }
     }
 }

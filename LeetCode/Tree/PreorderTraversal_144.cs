@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using CodePractice.BasicDataStructure.Tree;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Tree
 {
-    public class PreorderTraversal_144
+    public class PreorderTraversal_144 : LeetCodeBase
     {
+        public PreorderTraversal_144() : base("PreorderTraversal")
+        {
+        }
+
         public static IList<int> PreorderTraversal(TreeNode root)
         {
             return Preorder_Iterative(root);

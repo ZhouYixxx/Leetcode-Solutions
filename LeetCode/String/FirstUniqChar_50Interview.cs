@@ -11,10 +11,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.String
 {
-    public class FirstUniqChar_50Interview
+    public class FirstUniqChar_50Interview : LeetCodeBase
     {
         /// <summary>
         /// 暴力法，依次检查每个字符，使用双循环，时间复杂度O(n²)，空间复杂度O(1)
@@ -103,6 +104,11 @@ namespace CodePractice.LeetCode.String
         {
             Console.WriteLine(FirstUniqChar_array("leetcode"));
             Console.ReadKey();
+        }
+
+        public FirstUniqChar_50Interview() : base("FirstUniqChar_50Interview")
+        {
+            Test();
         }
     }
 }

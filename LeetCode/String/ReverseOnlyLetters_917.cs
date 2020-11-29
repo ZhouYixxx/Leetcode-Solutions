@@ -8,10 +8,11 @@
 
  */
 using System;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.String
 {
-    public class ReverseOnlyLetters_917
+    public class ReverseOnlyLetters_917 : LeetCodeBase
     {
         //双指针法，时间复杂度O(n),空间复杂度O(n)
         public static string ReverseOnlyLetters(string S)
@@ -51,6 +52,11 @@ namespace CodePractice.LeetCode.String
         {
             Console.WriteLine(ReverseOnlyLetters("a-bC-dEf-ghIj"));
             Console.ReadKey();
+        }
+
+        public ReverseOnlyLetters_917() : base("ReverseOnlyLetters_917")
+        {
+            Test();
         }
     }
 }

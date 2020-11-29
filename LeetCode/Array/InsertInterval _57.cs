@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class InsertInterval__57
+    public class InsertInterval__57 : LeetCodeBase
     {
         /// <summary>
         /// 使用While循环
@@ -55,6 +56,11 @@ namespace CodePractice.LeetCode.Array
             }
 
             Console.ReadKey();
+        }
+
+        public InsertInterval__57() : base("InsertInterval__57")
+        {
+            Test();
         }
     }
 }

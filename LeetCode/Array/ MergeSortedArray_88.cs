@@ -1,8 +1,9 @@
 ﻿using System;
+using CodePractice.Core;
 
 namespace CodePractice.LeetCode.Array
 {
-    public class _MergeSortedArray_88
+    public class _MergeSortedArray_88 : LeetCodeBase
     {
         //双指针法，从后向前遍历，时间复杂度O(m+n)，空间复杂度O(1)
         public static void Merge(int[] nums1, int m, int[] nums2, int n)
@@ -51,6 +52,11 @@ namespace CodePractice.LeetCode.Array
                 Console.Write(nums1[i] + "  ");
             }
             Console.ReadKey();
+        }
+
+        public _MergeSortedArray_88() : base("_MergeSortedArray_88")
+        {
+            Test();
         }
     }
 }

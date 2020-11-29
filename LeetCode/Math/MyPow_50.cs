@@ -1,6 +1,8 @@
-﻿namespace CodePractice.LeetCode.Math
+﻿using CodePractice.Core;
+
+namespace CodePractice.LeetCode.Math
 {
-    public class MyPow_50
+    public class MyPow_50 : LeetCodeBase
     {
         public double MyPow(double x, int n)
         {
@@ -34,6 +36,10 @@
                 return y * y;
             }
             return y * y * x;
+        }
+
+        public MyPow_50() : base("MyPow_50")
+        {
         }
     }
 }
