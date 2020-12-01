@@ -32,12 +32,18 @@ namespace CodePractice.LeetCode.Array
 
             #endregion
 
+            #region 34. 在排序数组中查找元素的第一个和最后一个位置
+
+            new FindFirstAndLastPositionOfElementInSortedArray_34();
+
+            #endregion
+
+
             #region 300. 最长上升子序列
 
             //new LongestIncreasingSubsequence_300().Test();
 
             #endregion
-
 
             #region 15. 三数之和
 
@@ -108,6 +114,12 @@ namespace CodePractice.LeetCode.Array
             #region 977.有序数组的平方
 
             //SquaresSortedArray_977.Test();
+
+            #endregion
+
+            #region LCP 18.早餐组合
+
+            //new BreakfastNumber_LCP18();
 
             #endregion
         }

@@ -22,6 +22,19 @@
 
             #endregion
 
+
+            #region 链表中环的检测
+
+            //new LinkedListCycle_141();
+
+            #endregion
+
+            #region 链表中环的检测并找到环入口
+
+            //new LinkedListCycleII_142();
+
+            #endregion
+
             #region 合并两个有序链表
 
             //MergeTwoLists.Test();

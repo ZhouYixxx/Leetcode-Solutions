@@ -19,7 +19,20 @@ namespace CodePractice
     {
         static void Main(string[] args)
         {
-
+            var linkedList = new MyLinkedList();
+            //linkedList.AddAtHead(7);
+            //linkedList.AddAtHead(2);
+            //linkedList.AddAtHead(1);
+            //linkedList.AddAtIndex(3,0);
+            //linkedList.DeleteAtIndex(2);
+            //linkedList.AddAtHead(6);
+            //linkedList.AddAtTail(4);
+            //var val = linkedList.Get(4);
+            //linkedList.AddAtHead(4);
+            //linkedList.AddAtIndex(5, 0);
+            //linkedList.AddAtHead(6);
+            linkedList.AddAtTail(1);
+            var va = linkedList.Get(0);
 
             //No08_MergeDic.MergeDic();
 

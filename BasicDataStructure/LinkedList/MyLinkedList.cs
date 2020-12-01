@@ -1,120 +1,112 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace CodePractice.BasicDataStructure.LinkedList
 {
-    /// <summary>
-    /// 实现一个双向链表
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class MyLinkedList<T>
+    public class MyLinkedList
     {
-        public MyLinkedList(Node<T> head)
-        {
-            Head = head;
-            Tail = head;
-        }
-
         public MyLinkedList()
         {
             Head = null;
-            Tail = null;
+            Length = 0;
         }
 
-        #region Properties
+        public MyLinkedList(int val)
+        {
+            Head = new ListNode(val);
+            Length = 1;
+        }
 
-        public Node<T> Head { get; private set; }
-        public Node<T> Tail { get; private set; }
+        public ListNode Head { get; private set; }
+        public int Length { get; private set; }
 
-        #endregion
+        //Get the value of the index-th node in the linked list. If the index is invalid, return -1
+        public int Get(int index)
+        {
+            var node = GetNode(index);
+            return node == null ? -1: node.val;
+        }
 
-        #region Methods
+        private ListNode GetNode(int index)
+        {
+            var dummyNode = new ListNode(-1);
+            dummyNode.next = Head;
+            var node = dummyNode;
+            while (index >= 0 && node != null)
+            {
+                node = node.next;
+                index--;
+            }
+            return node;
+        }
 
-        //获取链表长度
-        public int Length()
+        // Add a node of value val before the first element of the linked list. After the insertion,
+        // the new node will be the first node of the linked list.
+        public void AddAtHead(int val)
+        {
+            var newNode = new ListNode(val);
+            if (Head == null)
+            {
+                Head = new ListNode(val);
+                Length++;
+                return;
+            }
+            newNode.next = Head;
+            Head = newNode;
+            Length++;
+        }
+
+
+        //Append a node of value val to the last element of the linked list.
+        public void AddAtTail(int val)
         {
             if (Head == null)
             {
-                return 0;
-            }
-            int length = 1;
-            var node = Head.NextNode;
-            //如果为循环链表，则尾结点的NextNode不为空
-            while (node != null && node != Head)
-            {
-                length++;
-                node = node.NextNode;
-            }
-            return length;
-        }
-
-        /// <summary>
-        /// 是否为空链表
-        /// </summary>
-        /// <returns></returns>
-        public bool IsEmpty()
-        {
-            return Head == null;
-        }
-
-        /// <summary>
-        /// 清空链表
-        /// </summary>
-        public void Clear()
-        {
-            //todo 是否需要清空内存中所有的节点？
-            Head = null;
-        }
-        
-        /// <summary>
-        /// 链表尾部添加一个新节点
-        /// </summary>
-        /// <param name="node"></param>
-        public void Add(Node<T> node)
-        {
-            if (Tail == null)
-            {
-                Tail = node;
+                Head = new ListNode(val);
+                Length++;
                 return;
             }
-            Tail.NextNode = node;
-            node.PrevNode = Tail;
-            node.NextNode = null;
-            Tail = node;
+            var newNode = new ListNode(val);
+            var tail = Head;
+            while (tail.next != null)
+            {
+                tail = tail.next;
+            }
+            tail.next = newNode;
+            Length++;
         }
 
-        /// <summary>
-        /// 链表插入一个新节点（暂时只实现在target后插入新节点）
-        /// </summary>
-        /// <param name="target">插入的节点位置</param>
-        /// <param name="node">要插入的新节点</param>
-        public void Insert(Node<T> target,Node<T> node)
+        /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list,
+         the node will be appended to the end of linked list.If index is greater than the length, the node will not be inserted.*/
+        public void AddAtIndex(int index,int val)
         {
-            if (target == null || node == null)
+            if (index > Length)
+                return;
+            if (index <= 0)
+                AddAtHead(val);
+            var prevNode = GetNode(index - 1);
+            var node = prevNode.next;
+            var newNode = new ListNode(val);
+            prevNode.next = newNode;
+            newNode.next = node;
+            Length++;
+        }
+
+        /** Delete the index-th node in the linked list, if the index is valid. */
+        public void DeleteAtIndex(int index)
+        {
+            if (index < 0 || index >= Length)
+                return;
+            if (index == 0)
             {
+                Head = Head.next;
+                Length--;
                 return;
             }
-            node.NextNode = target.NextNode;
-            target.NextNode = node;
-            node.PrevNode = target;
-        }
-
-        /// <summary>
-        /// 链表删除一个节点
-        /// </summary>
-        /// <param name="node">要删除的节点</param>
-        public void Delete(Node<T> node)
-        {
-            if (node == null)
+            var prevNode = GetNode(index - 1);
+            if (prevNode.next != null)
             {
-                return;
+                prevNode.next = prevNode.next.next;
+                Length--;
             }
-            node.PrevNode.NextNode = node.NextNode;
-            node.NextNode.PrevNode = node.PrevNode;
-            node = null;
         }
-
-        #endregion
-
     }
 }

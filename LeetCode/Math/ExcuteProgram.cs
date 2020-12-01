@@ -36,7 +36,7 @@
 
             #region 最大三角形周长
 
-            new LargestPerimeterTriangle_976();
+            //new LargestPerimeterTriangle_976();
 
             #endregion
 

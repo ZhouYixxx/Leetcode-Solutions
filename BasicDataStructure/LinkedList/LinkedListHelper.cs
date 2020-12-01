@@ -5,7 +5,7 @@ namespace CodePractice.BasicDataStructure.LinkedList
 {
     public static class LinkedListHelper
     {
-        public static ListNode InitLinkedListByArray(int[] nums)
+        public static ListNode InitLinkedListByArray(int[] nums, int circleIndex = -1)
         {
             if (nums.Length == 0)
             {
@@ -17,6 +17,19 @@ namespace CodePractice.BasicDataStructure.LinkedList
             {
                 node.next = new ListNode(nums[i]);
                 node = node.next;
+            }
+            if (circleIndex > 0)
+            {
+                circleIndex %= nums.Length;
+                var dummy = new ListNode(-1);
+                dummy.next = head;
+                var circleNode = dummy;
+                while (circleIndex >= 0 && circleNode.next != null)
+                {
+                    circleNode = circleNode.next;
+                    circleIndex--;
+                }
+                node.next = circleNode;
             }
             return head;
         }
