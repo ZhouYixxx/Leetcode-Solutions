@@ -1,27 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CodePractice.BasicDataStructure.Heap
 {
-    public class MinHeap<T> where T : IComparable<T>
+    public class MinHeap<T>
     {
         private T[] container; // 存放堆元素的数组,0位置为空
+
+        private IComparer<T> _comparer;
+        private Comparison<T> _comparison = null;
 
         public int Capacity { get; private set; } // 堆的容量
 
         public int Count { get; private set; }  // 堆中已经存储的数据个数
 
-        public MinHeap(int _capacity)
+        public MinHeap(int _capacity, IComparer<T> comparer = null)
         {
             Capacity = _capacity;
             container = new T[Capacity + 1];
+            _comparer = comparer ?? Comparer<T>.Default;
             Count = 0;
         }
 
-        public MinHeap(T[] source)
+        public MinHeap(T[] source, Comparison<T> comparer)
         {
             Count = source.Length;
             Capacity = Count;
             container = new T[Capacity + 1];
+            _comparer = Comparer<T>.Default;
+            _comparison = comparer;
+            for (int i = 0; i < Capacity; i++)
+            {
+                container[i + 1] = source[i];
+            }
+            //建堆
+            for (int i = Count / 2; i >= 1; i--)
+            {
+                Heapify(i, Count);
+            }
+        }
+
+        public MinHeap(T[] source, IComparer<T> comparer = null)
+        {
+            Count = source.Length;
+            Capacity = Count;
+            container = new T[Capacity + 1];
+            _comparer = comparer ?? Comparer<T>.Default;
             for (int i = 0; i < Capacity; i++)
             {
                 container[i + 1] = source[i];
@@ -45,10 +69,21 @@ namespace CodePractice.BasicDataStructure.Heap
             Count++;
             container[Count] = value;
             int index = Count;
-            while (index > 1 && container[index].CompareTo(container[(index >> 1)]) < 0)
+            if (_comparison != null)
             {
-                Swap(index, index>>1);
-                index = (index >> 1);
+                while (index > 1 && _comparison(container[index], container[(index >> 1)]) < 0)
+                {
+                    Swap(index, index >> 1);
+                    index = (index >> 1);
+                }
+            }
+            else
+            {
+                while (index > 1 && _comparer.Compare(container[index], container[(index >> 1)]) < 0)
+                {
+                    Swap(index, index >> 1);
+                    index = (index >> 1);
+                }
             }
         }
 
@@ -66,23 +101,46 @@ namespace CodePractice.BasicDataStructure.Heap
             while (true)
             {
                 int maxPos = index;
-                //和左节点比
-                if ((index << 1) <= Count && container[index].CompareTo(container[(index << 1)]) > 0)
+                if (_comparison != null)
                 {
-                    maxPos = 2 * index;
+                    //和左节点比
+                    if ((index << 1) <= Count && _comparison(container[index], container[(index << 1)]) > 0)
+                    {
+                        maxPos = 2 * index;
+                    }
+                    //和右节点比
+                    if ((index << 1) + 1 <= Count && _comparison(container[index], container[(index << 1) + 1]) > 0)
+                    {
+                        maxPos = 2 * index + 1;
+                    }
+                    //如果比左右节点都大
+                    if (maxPos == index)
+                    {
+                        break;
+                    }
+                    Swap(index, maxPos);
+                    index = maxPos;
                 }
-                //和右节点比
-                if ((index << 1) + 1 <= Count && container[index].CompareTo(container[(index << 1) + 1]) > 0)
+                else
                 {
-                    maxPos = 2 * index + 1;
+                    //和左节点比
+                    if ((index << 1) <= Count && _comparer.Compare(container[index], container[(index << 1)]) > 0)
+                    {
+                        maxPos = 2 * index;
+                    }
+                    //和右节点比
+                    if ((index << 1) + 1 <= Count && _comparer.Compare(container[index], container[(index << 1) + 1]) > 0)
+                    {
+                        maxPos = 2 * index + 1;
+                    }
+                    //如果比左右节点都大
+                    if (maxPos == index)
+                    {
+                        break;
+                    }
+                    Swap(index, maxPos);
+                    index = maxPos;
                 }
-                //如果比左右节点都大
-                if (maxPos == index)
-                {
-                    break;
-                }
-                Swap(index,maxPos);
-                index = maxPos;
             }
         }
 
@@ -112,22 +170,44 @@ namespace CodePractice.BasicDataStructure.Heap
             {
                 int minPos = index;
                 //和左节点比
-                if ((index << 1) <= n && container[minPos].CompareTo(container[(index << 1)]) > 0)
+                if (_comparison != null)
                 {
-                    minPos = 2 * index;
+                    if ((index << 1) <= n && _comparison(container[minPos], container[(index << 1)]) > 0)
+                    {
+                        minPos = 2 * index;
+                    }
+                    //和右节点比
+                    if ((index << 1) + 1 <= n && _comparison(container[minPos], container[(index << 1) + 1]) > 0)
+                    {
+                        minPos = 2 * index + 1;
+                    }
+                    //如果比左右节点都大
+                    if (minPos == index)
+                    {
+                        break;
+                    }
+                    Swap(index, minPos);
+                    index = minPos;
                 }
-                //和右节点比
-                if ((index << 1) + 1 <= n && container[minPos].CompareTo(container[(index << 1) + 1]) > 0)
+                else
                 {
-                    minPos = 2 * index + 1;
+                    if ((index << 1) <= n && _comparer.Compare(container[minPos], container[(index << 1)]) > 0)
+                    {
+                        minPos = 2 * index;
+                    }
+                    //和右节点比
+                    if ((index << 1) + 1 <= n && _comparer.Compare(container[minPos], container[(index << 1) + 1]) > 0)
+                    {
+                        minPos = 2 * index + 1;
+                    }
+                    //如果比左右节点都大
+                    if (minPos == index)
+                    {
+                        break;
+                    }
+                    Swap(index, minPos);
+                    index = minPos;
                 }
-                //如果比左右节点都大
-                if (minPos == index)
-                {
-                    break;
-                }
-                Swap(index, minPos);
-                index = minPos;
             }
         }
 

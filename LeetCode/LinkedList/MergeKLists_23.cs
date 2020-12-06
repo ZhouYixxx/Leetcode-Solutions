@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
+using CodePractice.BasicDataStructure.Heap;
 using CodePractice.BasicDataStructure.LinkedList;
 using CodePractice.Core;
 
@@ -85,6 +86,36 @@ namespace CodePractice.LeetCode.LinkedList
             }
 
             return dummyNode.next;
+        }
+
+        /// <summary>
+        /// 用小顶堆/优先队列实现,K个长度为n的链表，复杂度为O(nkLogK)
+        /// </summary>
+        /// <param name="lists"></param>
+        /// <returns></returns>
+        public ListNode MergeKLists2(ListNode[] lists)
+        {
+            var minHeap = new MinHeap<ListNode>(lists, Comparison);
+            var head = minHeap.PeekMin();
+            var node = head;
+            for (int i = 0; i < lists.Length; i++)
+            {
+                var tempNode = lists[i].next;
+                while (tempNode != null)
+                {
+                    minHeap.Insert(tempNode);
+                    var curNode = minHeap.PeekMin();
+                    node.next = curNode;
+                    node = node.next;
+                    tempNode = tempNode.next;
+                }
+            }
+            return head;
+        }
+
+        private int Comparison(ListNode x, ListNode y)
+        {
+            return x.val.CompareTo(y.val);
         }
     }
 }

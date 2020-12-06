@@ -1,27 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CodePractice.BasicDataStructure.Heap
 {
-    public class MaxHeap<T> where T : IComparable<T>
+    public class MaxHeap<T>
     {
         private T[] container; // 存放堆元素的数组,0位置为空
+
+        private IComparer<T> _comparison;
 
         public int Capacity { get; private set; } // 堆的容量
 
         public int Count { get; private set; }  // 堆中已经存储的数据个数
 
-        public MaxHeap(int _capacity)
+        public MaxHeap(int _capacity, IComparer<T> comparer = null)
         {
             Capacity = _capacity;
             container = new T[Capacity + 1];
             Count = 0;
+            _comparison = comparer ?? Comparer<T>.Default;
         }
 
-        public MaxHeap(T[] source)
+        public MaxHeap(T[] source, IComparer<T> comparer = null)
         {
             Count = source.Length;
             Capacity = Count;
             container = new T[Capacity + 1];
+            _comparison = comparer ?? Comparer<T>.Default;
             for (int i = 0; i < Capacity; i++)
             {
                 container[i + 1] = source[i];
@@ -44,7 +49,7 @@ namespace CodePractice.BasicDataStructure.Heap
             Count++;
             container[Count] = value;
             int index = Count;
-            while (index > 1 && container[index].CompareTo(container[(index >> 1)]) > 0)
+            while (index > 1 && _comparison.Compare(container[index], container[(index>>1)]) > 0)
             {
                 Swap(index, index >> 1);
                 index = (index >> 1);
@@ -89,12 +94,12 @@ namespace CodePractice.BasicDataStructure.Heap
             {
                 int maxPos = index;
                 //和左节点比
-                if ((index << 1) <= n && container[maxPos].CompareTo(container[(index << 1)]) < 0)
+                if ((index << 1) <= n && _comparison.Compare(container[maxPos], container[(index << 1)]) < 0)
                 {
                     maxPos = 2 * index;
                 }
                 //和右节点比
-                if ((index << 1) + 1 <= n && container[maxPos].CompareTo(container[(index << 1) + 1]) < 0)
+                if ((index << 1) + 1 <= n && _comparison.Compare(container[maxPos], container[(index << 1)+1]) < 0)
                 {
                     maxPos = 2 * index + 1;
                 }
