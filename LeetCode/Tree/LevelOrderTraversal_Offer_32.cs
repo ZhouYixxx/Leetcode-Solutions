@@ -35,11 +35,48 @@ namespace CodePractice.LeetCode.Tree
             return result.ToArray();
         }
 
+        public List<IList<int>> LevelOrder1(TreeNode root)
+        {
+            var list = new List<IList<int>>();
+            if (root == null)
+                return list;
+            var node = root;
+            var quene = new Queue<TreeNode>();
+            quene.Enqueue(node);
+            TreeNode last = root;
+            TreeNode nextLevelLast = root;
+            var levelList = new List<int>();
+            while (quene.Count > 0)
+            {
+                node = quene.Dequeue();
+                if (node.left != null)
+                {
+                    quene.Enqueue(node.left);
+                    nextLevelLast = node.left;
+                }
+                if (node.right != null)
+                {
+                    quene.Enqueue(node.right);
+                    nextLevelLast = node.right;
+                }
+                levelList.Add(node.val);
+                if (node == last)
+                {
+                    var tempList = new List<int>(levelList);
+                    list.Add(tempList);
+                    levelList.Clear();
+                    last = nextLevelLast;
+                }
+            }
+            return list;
+        }
+
         public void Test()
         {
             var nodeVals = "5, 3, 7, 1, 4, 6, 8,null, 2";
             var node = TreeNodeHelper.DeserializeBinaryTreeFromBFS(nodeVals);
-            var array = LevelOrder(node);
+            TreeNodeHelper.ShowBinaryTree(node);
+            var array = LevelOrder1(node);
             foreach (var item in array)
             {
                 Console.Write($"{item},");

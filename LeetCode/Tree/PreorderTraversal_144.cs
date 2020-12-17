@@ -10,6 +10,7 @@ namespace CodePractice.LeetCode.Tree
     {
         public PreorderTraversal_144() : base("PreorderTraversal")
         {
+            
         }
 
         public static IList<int> PreorderTraversal(TreeNode root)
@@ -49,30 +50,48 @@ namespace CodePractice.LeetCode.Tree
         /// <param name="root"></param>
         private static List<int> Preorder_Iterative(TreeNode root)
         {
-            var array = new List<int>();
+            var res = new List<int>();
             var stack = new Stack<TreeNode>();
-            var currentNode = root;
-            while (currentNode != null || stack.Any())
+            var node = root;
+            while (stack.Any() || node != null)
             {
-                while (currentNode != null)
+                //一直向左下方向寻找
+                while (node != null)
                 {
-                    array.Add(currentNode.val);
-                    if (currentNode.right != null)
-                    {
-                        stack.Push(currentNode.right);
-                    }
-                    currentNode = currentNode.left;
+                    res.Add(node.val);
+                    stack.Push(node);
+                    node = node.left;
                 }
-
-                if (stack.Any())
-                {
-                    currentNode = stack.Pop();
-                }
+                //入栈的节点都不再add
+                node = stack.Pop();
+                node = node.right;
             }
-            return array;
+            return res;
+
+            //迭代方法二：
+            //var array = new List<int>();
+            //var stack = new Stack<TreeNode>();
+            //stack.Push(root);
+            //while (stack.Count > 0)
+            //{
+            //    //根节点加入
+            //    var topNode = stack.Pop();
+            //    array.Add(topNode.val);
+            //    //右子树先入栈，后出栈，保证根左右的顺序
+            //    if (topNode.right != null)
+            //    {
+            //        stack.Push(topNode.right);
+            //    }
+            //    if (topNode.left != null)
+            //    {
+            //        stack.Push(topNode.left);
+            //    }
+            //}
+
+            //return array;
         }
 
-        public static void Test()
+        public void Test()
         {
             var root = new TreeNode(5);
             var left1 = new TreeNode(3);

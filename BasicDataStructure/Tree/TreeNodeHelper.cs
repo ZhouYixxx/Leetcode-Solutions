@@ -58,7 +58,7 @@ namespace CodePractice.BasicDataStructure.Tree
             var treeNodeArray = new int?[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == "null")
+                if (array[i].Trim() == "null")
                 {
                     treeNodeArray[i] = null;
                 }
@@ -74,6 +74,10 @@ namespace CodePractice.BasicDataStructure.Tree
 
         private static TreeNode BuildTree(Queue<int?> quene)
         {
+            if (!quene.Any())
+            {
+                return null;
+            }
             var val = quene.Dequeue();
             if (val == null)
             {
@@ -187,31 +191,33 @@ namespace CodePractice.BasicDataStructure.Tree
             var node = root;
             Console.WriteLine("Current Binary Tree:");
             var top = Console.CursorTop;
-            Console.SetCursorPosition((int) Math.Pow(2, height-1), top);
+            Console.SetCursorPosition((int) Math.Pow(2, height+1), top);
             var left = Console.CursorLeft;
-            ShowNode(node, left, top);
+            ShowNode(node, left, top, height);
         }
 
-        private static void ShowNode(TreeNode node, int left, int top)
+        private static void ShowNode(TreeNode node, int left, int top, int height)
         {
             if (node == null)
             {
                 return;
             }
+            height--;
             Console.SetCursorPosition(left, top);
             Console.Write(node.val);
             if (node.left != null)
             {
-                Console.SetCursorPosition(left-1, top+1);
+                Console.SetCursorPosition(left- (int)Math.Pow(2, height), top+1);
                 Console.Write("/");
+                Console.Write("");
+                ShowNode(node.left, left - (int)Math.Pow(2, height)-1, top + 2, height);
             }
             if (node.right != null)
             {
-                Console.SetCursorPosition(left + 1, top + 1);
+                Console.SetCursorPosition(left + (int)Math.Pow(2, height), top + 1);
                 Console.Write("\\");
+                ShowNode(node.right, left + (int)Math.Pow(2, height)+1, top + 2, height);
             }
-            ShowNode(node.left, left - 2, top + 2);
-            ShowNode(node.right, left + 2, top + 2);
         }
 
         #endregion

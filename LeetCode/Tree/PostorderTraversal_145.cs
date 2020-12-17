@@ -10,7 +10,7 @@ namespace CodePractice.LeetCode.Tree
     {
         public IList<int> PostorderTraversal(TreeNode root)
         {
-            //return Postorder_Iterative(root);
+            return Postorder_Iterative(root);
 
             var array = new List<int>();
             Postorder_Recursive(root, array);
@@ -44,27 +44,40 @@ namespace CodePractice.LeetCode.Tree
         /// <param name="root"></param>
         private List<int> Postorder_Iterative(TreeNode root)
         {
-            var array = new List<int>();
+            var res = new List<int>();
             var stack = new Stack<TreeNode>();
-            var currentNode = root;
-            while (currentNode != null || stack.Any())
+            var node = root;
+            TreeNode preVisited = null;//区分是从左子树还是右子树上来的节点
+            while (stack.Any() || node != null)
             {
-                while (currentNode != null)
+                while (node != null)
                 {
-                    array.Add(currentNode.val);
-                    if (currentNode.right != null)
-                    {
-                        stack.Push(currentNode.right);
-                    }
-                    currentNode = currentNode.left;
+                    stack.Push(node);
+                    node = node.left;
                 }
-
                 if (stack.Any())
                 {
-                    currentNode = stack.Pop();
+                    node = stack.Peek();
+                    //如果之前已经访问了右子树，说明已经遍历了左右子树，可以add
+                    if (node.right == null || preVisited == node.right)
+                    {
+                        stack.Pop();
+                        res.Add(node.val);
+                        preVisited = node;
+                        node = null;
+                    }
+
+                    //如果之前已经没有访问右子树，应该遍历右子树
+                    else
+                    {
+                        //stack.Push(node.right);
+                        preVisited = node;
+                        node = node.right;
+                    }
                 }
             }
-            return array;
+
+            return res;
         }
 
         public void Test()

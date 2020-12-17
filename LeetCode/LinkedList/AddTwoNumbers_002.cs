@@ -27,6 +27,7 @@ namespace CodePractice.LeetCode.LinkedList
             var node2 = l2;
             var dummy = new ListNode(-1);
             var newNode = dummy;
+            //处理共有的数
             while (node1 != null && node2 != null)
             {
                 var val = node1.val + node2.val + digit;
@@ -38,6 +39,7 @@ namespace CodePractice.LeetCode.LinkedList
                 node1 = node1.next;
                 node2 = node2.next;
             }
+            //处理较长的那个数剩下的位数
             while (node1 != null)
             {
                 var val = node1.val + digit;
@@ -58,6 +60,7 @@ namespace CodePractice.LeetCode.LinkedList
                 newNode = newNode.next;
                 node2 = node2.next;
             }
+            //digit=1说明最后还要进一位
             if (digit == 1)
             {
                 newNode.next = new ListNode(1);

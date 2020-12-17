@@ -89,6 +89,17 @@ namespace CodePractice
 
             LeetCode.Greedy.ExcuteProgram.Excute();
 
+            #region Greedy
+
+            LeetCode.Greedy.ExcuteProgram.Excute();
+
+            #endregion
+            #endregion
+
+            #region BackTrack
+
+            LeetCode.BackTrack.ExcuteProgram.Excute();
+
             #endregion
         }
     }

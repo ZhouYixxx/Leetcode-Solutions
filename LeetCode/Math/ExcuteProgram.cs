@@ -46,6 +46,18 @@
 
             #endregion
 
+            #region 翻转矩阵最大得分
+
+            //new ScoreAfterFlippingMatrix_861();
+
+            #endregion
+
+            #region 数组重复
+
+            //new ContainsDuplicate_217();
+
+            #endregion
+
         }
     }
 }

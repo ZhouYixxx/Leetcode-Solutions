@@ -17,7 +17,8 @@ namespace CodePractice.LeetCode.LinkedList
             var head4 = LinkedListHelper.InitLinkedListByArray(new int[] {6,10});
             var head5 = LinkedListHelper.InitLinkedListByArray(new int[] {7,8});
             var lists = new ListNode[] {head1, head2, head3, head4, head5};
-            var merged = MergeKLists(lists);
+            //var merged = MergeKLists(lists);
+            var merged = MergeKListsRecursion(lists, 0, lists.Length - 1);
             LinkedListHelper.ShowLinkedList(merged);
         }
 
@@ -51,6 +52,21 @@ namespace CodePractice.LeetCode.LinkedList
             }
 
             return lists[0];
+        }
+
+        public ListNode MergeKListsRecursion(ListNode[] lists, int start, int end)
+        {
+            if (start > end)
+            {
+                return null;
+            }
+            if (start == end)
+            {
+                return lists[start];
+            }
+            var mid = (start + end) >> 1;
+            return MergeTwoLists(MergeKListsRecursion(lists, start, mid), MergeKListsRecursion(lists, mid + 1, end));
+
         }
 
         private ListNode MergeTwoLists(ListNode head1, ListNode head2)
