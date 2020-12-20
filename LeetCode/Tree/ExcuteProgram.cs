@@ -42,7 +42,19 @@
 
             #region 数组转化为二叉树(后序+中序)
 
-            new BuildTree_106();
+            //new BuildTree_106();
+
+            #endregion
+
+            #region 数组转化为二叉树(前序+中序)
+
+            //new BuildTree_105();
+
+            #endregion
+
+            #region 序列化与反序列化
+
+            //new SerDeserBinaryTree_297();
 
             #endregion
         }

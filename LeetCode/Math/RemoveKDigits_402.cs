@@ -14,8 +14,8 @@ namespace CodePractice.LeetCode.Math
     {
         public RemoveKDigits_402() : base("RemoveKDigits_402")
         {
-            var num = "10200";
-            var k = 1;
+            var num = "10";
+            var k = 2;
             Console.WriteLine(RemoveKdigits2(num,k));
             Console.ReadKey();
         }
@@ -31,17 +31,17 @@ namespace CodePractice.LeetCode.Math
             var nums = num.ToCharArray();
             if (nums.Length == 0)
             {
-                return num;
+                return "0";
             }
             var s = new StringBuilder(num);
             //每次都找到要移除的数字,将其删除，循环k次
             for (int i = 0; i < k; i++)
             {
                 int index = 0;
-                for (int j = 1; j < num.Length; j++)
+                for (int j = 1; j < s.Length; j++)
                 {
-                    //num[j] < num[j-1]说明应该移除j处的字符
-                    if (num[j] < num[j-1])
+                    //s[j] < s[j-1]说明应该移除j处的字符
+                    if (s[j] < s[j-1])
                         break;
                     index = j;
                 }
@@ -52,7 +52,7 @@ namespace CodePractice.LeetCode.Math
             {
                 s.Remove(0, 1);
             }
-            return s.ToString();
+            return string.IsNullOrEmpty(s.ToString()) ? "0" : s.ToString();
         }
 
         /// <summary>
