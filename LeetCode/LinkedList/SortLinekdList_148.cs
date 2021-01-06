@@ -29,14 +29,14 @@ namespace CodePractice.LeetCode.LinkedList
                 return head;
             }
             //head指向tail时，应该将head的next设置为null切断链表，避免中点被多次处理甚至死循环
-            if (head.next == tail)
-            {
-                head.next = null;
-                return head;
-            }
+            //if (head.next == tail)
+            //{
+            //    head.next = null;
+            //    return head;
+            //}
             var mid = FindMidNode(head, tail);
             var node1 = SortList(head, mid);
-            var node2 = SortList(mid, tail);
+            var node2 = SortList(mid.next, tail);
             var sortedNode = MergeTwoLists(node1, node2);
             return sortedNode;
         }
@@ -104,30 +104,30 @@ namespace CodePractice.LeetCode.LinkedList
         {
             var dummyNode = new ListNode(0);
             var temp = dummyNode;
-            var temp1 = head1;
-            var temp2 = head2;
-            while (temp1 != null && temp2 != null)
+            //var temp1 = head1;
+            //var temp2 = head2;
+            while (head1 != null && head2 != null)
             {
-                if (temp1.val >= temp2.val)
+                if (head1.val >= head2.val)
                 {
-                    temp.next = temp2;
-                    temp2 = temp2.next;
+                    temp.next = head2;
+                    head2 = head2.next;
                 }
                 else
                 {
-                    temp.next = temp1;
-                    temp1 = temp1.next;
+                    temp.next = head1;
+                    head1 = head1.next;
                 }
                 temp = temp.next;
             }
 
-            if (temp1 != null)
+            if (head1 != null)
             {
-                temp.next = temp1;
+                temp.next = head1;
             }
-            else if (temp2 != null)
+            else if (head2 != null)
             {
-                temp.next = temp2;
+                temp.next = head2;
             }
             return dummyNode.next;
         }

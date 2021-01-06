@@ -101,6 +101,13 @@ namespace CodePractice
             LeetCode.BackTrack.ExcuteProgram.Excute();
 
             #endregion
+
+
+            #region DP
+
+            LeetCode.DP.ExcuteProgram.Excute();
+
+            #endregion
         }
     }
 }

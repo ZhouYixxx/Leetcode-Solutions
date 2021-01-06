@@ -122,6 +122,12 @@ namespace CodePractice.LeetCode.Array
             //new BreakfastNumber_LCP18();
 
             #endregion
+
+            #region 较大分组的位置_830
+
+            //new LargeGroupPositions_830();
+
+            #endregion
         }
     }
 }
