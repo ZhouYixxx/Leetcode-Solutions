@@ -58,10 +58,32 @@ public class Solution887 {
         {
             for (int h = 2; h < n+1; h++)
             {
-                for (int t = 2; t <= h; t++)
+                //二分法求解具有最小尝试次数的楼层mid
+                int left = 1, right = h;
+                int mid = left;
+                while (left < right)
                 {
-                    dp[i,h] = Math.Min(dp[i,h], Math.Max(dp[i-1,t-1], dp[i,h-t])+1);
+                    mid = left+(right-left)/2;
+                    var value1 = dp[i-1,mid-1];
+                    var value2 = dp[i,h-mid];
+                    if (value1 == value2)
+                        break;
+                    //left,right和mid的更新，必须要注意边界条件，避免死循环
+                    if (value1 > value2)
+                    {
+                        right = mid;    
+                    }
+                    else
+                    {
+                        left = mid+1;
+                    }
                 }
+                dp[i,h] = Math.Min(dp[i,h], Math.Max(dp[i-1,mid-1], dp[i,h-mid])+1);
+                //暴力法求解具有最小尝试次数的楼层t
+                // for (int t = 2; t <= h; t++)
+                // {
+                //     dp[i,h] = Math.Min(dp[i,h], Math.Max(dp[i-1,t-1], dp[i,h-t])+1);
+                // }
             }
         }
         return dp[k,n];
