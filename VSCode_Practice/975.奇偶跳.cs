@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Solution {
+public class Solution975 {
     public void Test()
     {
         var arr = new int[]{2,3,1,1,4};
