@@ -21,6 +21,12 @@
             //new MonotoneIncreasingDigits_738();
 
             #endregion
+
+            #region 45. 跳跃游戏2
+
+            //new Jump_45();
+
+            #endregion
         }
     }
 }
