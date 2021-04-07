@@ -2,3 +2,6 @@
 /obj
 /.vs
 /CodePractice.csproj.user
+/VSCode_Practice/bin
+/VSCode_Practice/obj
+/.gitignore
