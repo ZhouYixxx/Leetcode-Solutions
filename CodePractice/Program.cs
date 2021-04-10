@@ -61,6 +61,12 @@ namespace CodePractice
 
             #endregion
 
+            #region Stack/Quene
+
+            LeetCode.Stack_Quene.ExcuteProgram.Excute();
+
+            #endregion
+
             #region String
 
             LeetCode.String.ExcuteProgram.Excute();
