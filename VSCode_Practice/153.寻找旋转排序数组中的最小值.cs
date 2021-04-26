@@ -10,12 +10,12 @@ using System;
 public class Solution153 {
     public void Test()
     {
-        var nums = new int[]{4,5,6,7,0,1,2};
+        var nums = new int[]{10,11,12,13,14,0,4,5,6,7,8};
         var ans = FindMin(nums);
     }
 
-    //还有问题
-    public int FindMin(int[] nums) 
+    
+    public int FindMin2(int[] nums) 
     {
         var l = 0;
         var r = nums.Length-1;
@@ -24,23 +24,59 @@ public class Solution153 {
         {
             var mid = l+(r-l)/2;
             min = Math.Min(nums[mid], min);
-            //都是单调区间，无需担心mid+1溢出
+            //左右都是单调区间，无需担心mid+1溢出
             if (nums[l] < nums[mid] && nums[mid+1] < nums[r])
             {
+                min = Math.Min(min, Math.Min(nums[l], nums[r]));
                 l = mid+1;
                 continue;
             }
             //[l,mid]是单调区间，最小值应该在[mid+1,r]中寻找
             if (nums[l] < nums[mid])
             {
+                min = Math.Min(min, nums[l]);
                 l = mid+1;
             }
             else
             {
+                if (mid != r)
+                {
+                    min = Math.Min(min, nums[mid+1]);
+                }
                 r = mid-1;
             }
         }
         return min;
+    }
+
+    //简洁写法
+    public int FindMin(int[] nums)
+    {
+        var l = 0;
+        var r = nums.Length-1;
+        if (nums[l] < nums[r])
+        {
+            return nums[l];
+        }
+        while (l <= r)
+        {
+            if (l == r)
+            {
+                return nums[l];
+            }
+            var mid = l+(r-l)/2;
+            if (nums[mid] > nums[r])
+            {
+                l = mid+1;
+                continue;
+            }
+            if (nums[mid] < nums[r])
+            {
+                r = mid;
+                continue;
+            }
+        }
+        return nums[l];
     }
 }
 // @lc code=end
