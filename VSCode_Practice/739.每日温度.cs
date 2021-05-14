@@ -6,6 +6,7 @@
 
 // @lc code=start
 using System;
+using System.Collections.Generic;
 
 public class Solution739 {
     public void Test()
@@ -13,22 +14,34 @@ public class Solution739 {
         var temperatures  = new int[]{73, 74, 75, 71, 69, 72, 76, 73};
         var ans = DailyTemperatures(temperatures);
     }
+
+    //找下一个最大最小，单调栈问题
     public int[] DailyTemperatures(int[] T) 
     {
         var res = new int[T.Length];
-        var lastHigh = 0;
-        var highTemp = T[0];
-        for (int i = 1; i < T.Length; i++)
+        //单调栈存储下标
+        var stack = new Stack<int>();
+        for (int i = 0; i < T.Length; i++)
         {
-            if (highTemp < T[i])
+            while (true)
             {
-                for (int j = lastHigh; j < i; j++)
+                if (stack.Count == 0)
                 {
-                    res[j] = i-lastHigh;
+                    stack.Push(i);
+                    break;
                 }
-                lastHigh = i;
-                highTemp = T[i];
-            }
+                var preIndex = stack.Peek();
+                if (T[i] > T[preIndex])
+                {
+                    stack.Pop();
+                    res[preIndex] = i - preIndex;
+                }
+                else
+                {
+                    stack.Push(i);
+                    break;
+                }
+            } 
         }
         return res;
     }
