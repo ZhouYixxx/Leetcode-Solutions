@@ -30,6 +30,8 @@ public class Solution739 {
                     stack.Push(i);
                     break;
                 }
+                //找下一个最大值，栈应该从底部开始是递减的
+                //找下一个最小值，栈应该从底部开始是递增的
                 var preIndex = stack.Peek();
                 if (T[i] > T[preIndex])
                 {
