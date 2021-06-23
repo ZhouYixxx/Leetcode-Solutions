@@ -10,21 +10,22 @@ namespace study
         private static int[] _nums = new int[1000];
         static void Main(string[] args)
         {
-            var sol = new Solution94();
+            var sol = new Solution32_offer();
             sol.Test(); 
 
             //aggregate用法测试
             // var test = new string[]{"B1","1F","2F","3F","4F"};
-            // var res = test.Aggregate((cur,next)=>
+            // var res = test.Length == 1 ? $"\'{test[0]}\'" : test.Aggregate((cur,next)=>
             // {
-            //      if (string.IsNullOrEmpty(cur))
-            //      {
-            //          return cur;
-            //      }
-            //      next = $"{cur},{next}";
+            //     if (cur == test[0])
+            //     {
+            //         return $"\'{cur}\',\'{next}\'";
+            //     }
+            //      next = $"{cur},\'{next}\'";
             //      return next;
             // } );
-            // var res2 = test.Aggregate((cur,next)=>string.IsNullOrEmpty(cur) ? cur : $"{cur},{next}" ); 
+            // var res2 = test.Aggregate((cur,next)=>string.IsNullOrEmpty(cur) ? $"{cur}" : $"{cur},{next}" ); 
+            // var res3 = test.Aggregate((cur,next)=> $"{cur},\'{next}\'" ); 
         }
 
         private static int XOR_Test()

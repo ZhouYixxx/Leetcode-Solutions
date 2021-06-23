@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=589 lang=csharp
+ * @lc app=leetcode.cn id=590 lang=csharp
  *
- * [589] N 叉树的前序遍历
+ * [590] N 叉树的后序遍历
  */
 
 // @lc code=start
@@ -17,7 +17,7 @@ public class Node {
         val = _val;
     }
 
-    public Node(int _val,IList<Node> _children) {
+    public Node(int _val, IList<Node> _children) {
         val = _val;
         children = _children;
     }
@@ -26,52 +26,27 @@ public class Node {
 using System;
 using System.Collections.Generic;
 
-public class Solution589 {
-    public IList<int> Preorder(Node root) 
-    {
-        var ans = new List<int>();
-        PreOrder_Recursive(ans, root);
-        return ans;
-    }
-
-    private void PreOrder_Recursive(IList<int> res, Node node)
-    {
-        if (node == null)
-        {
-            return;
-        }
-        res.Add(node.val);
-        for (int i = 0; i < node.children.Count; i++)
-        {
-            PreOrder_Recursive(res,node.children[i]);
-        }
-    }
-
-    /// <summary>
-    /// 迭代写法
-    /// </summary>
-    /// <param name="node"></param>
-    /// <returns></returns>
-    private IList<int> PreOrder_Iterator(Node node)
+public class Solution590 {
+    public IList<int> Postorder(Node root) 
     {
         var res = new List<int>();
-        if (node == null)
+        if (root == null)
         {
             return res;
         }
         var stack = new Stack<Node>();
-        stack.Push(node);
+        stack.Push(root);
         while (stack.Count > 0)
         {
             //把当前节点入栈
-            node = stack.Pop();
-            res.Add(node.val);
-            if (node.children != null)
+            root = stack.Pop();
+            res.Add(root.val);
+            if (root.children != null)
             {            
                 //把所有子节点从右到左入栈
-                for (int i = 0; i < node.children.Count; i++)
+                for (int i = 0; i < root.children.Count; i++)
                 {
-                    var child = node.children[i];
+                    var child = root.children[i];
                     if (child != null)
                     {
                         stack.Push(child);
@@ -79,10 +54,12 @@ public class Solution589 {
                 }   
             }
         }
+        res.Reverse();
         return res;
     }
 
-// Definition for a Node.
+
+    // Definition for a Node.
     public class Node {
         public int val;
         public IList<Node> children;
@@ -98,7 +75,7 @@ public class Solution589 {
             children = _children;
         }
     }
-
+    
 }
 // @lc code=end
 
