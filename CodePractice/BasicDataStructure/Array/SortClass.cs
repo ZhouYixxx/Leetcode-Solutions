@@ -201,7 +201,7 @@ namespace CodePractice.BasicDataStructure.Array
             while (index >= 1)
             {
                 index--;
-                arrInts[index] = maxHeap.PeekMax();
+                arrInts[index] = maxHeap.Pop();
             }
             //minHeap.ShowHeap();
         }

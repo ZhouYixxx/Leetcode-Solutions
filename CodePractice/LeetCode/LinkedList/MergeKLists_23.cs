@@ -112,7 +112,7 @@ namespace CodePractice.LeetCode.LinkedList
         public ListNode MergeKLists2(ListNode[] lists)
         {
             var minHeap = new MinHeap<ListNode>(lists, Comparison);
-            var head = minHeap.PeekMin();
+            var head = minHeap.Pop();
             var node = head;
             for (int i = 0; i < lists.Length; i++)
             {
@@ -120,7 +120,7 @@ namespace CodePractice.LeetCode.LinkedList
                 while (tempNode != null)
                 {
                     minHeap.Insert(tempNode);
-                    var curNode = minHeap.PeekMin();
+                    var curNode = minHeap.Pop();
                     node.next = curNode;
                     node = node.next;
                     tempNode = tempNode.next;

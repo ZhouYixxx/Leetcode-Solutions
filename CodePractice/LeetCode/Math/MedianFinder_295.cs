@@ -60,7 +60,7 @@ namespace CodePractice.LeetCode.Math
             {
                 minHeap.Insert(num);
                 Count++;
-                var curMax = maxHeap.GetMax();
+                var curMax = maxHeap.Peek();
                 if (num < curMax)
                 {
                     minHeap.Insert(curMax);
@@ -71,7 +71,7 @@ namespace CodePractice.LeetCode.Math
             }
             //选择插入大顶端还是小顶堆
             Count++;
-            var max = maxHeap.GetMax();
+            var max = maxHeap.Peek();
             if (num <= max)
             {
                 maxHeap.Insert(num);
@@ -96,13 +96,13 @@ namespace CodePractice.LeetCode.Math
             while (maxHeap.Count - minHeap.Count > 1)
             {
                 //大顶堆移除元素，小顶堆加入元素
-                max = maxHeap.PeekMax();
+                max = maxHeap.Pop();
                 minHeap.Insert(max);
             }
             while (minHeap.Count - maxHeap.Count > 1)
             {
                 //小顶堆移除元素，大顶堆加入元素
-                min = minHeap.PeekMin();
+                min = minHeap.Pop();
                 maxHeap.Insert(min);
             }
         }
@@ -116,12 +116,12 @@ namespace CodePractice.LeetCode.Math
             //Count为偶数
             if ((Count & 1) == 0)
             {
-                double max = maxHeap.GetMax();
-                double min = minHeap.GetMin();
+                double max = maxHeap.Peek();
+                double min = minHeap.Peek();
                 return min + ((max - min) / 2);
             }
             //Count为奇数
-            return maxHeap.Count > minHeap.Count ? (double)maxHeap.GetMax() : (double)minHeap.GetMin();
+            return maxHeap.Count > minHeap.Count ? (double)maxHeap.Peek() : (double)minHeap.Peek();
         }
     }
 }
