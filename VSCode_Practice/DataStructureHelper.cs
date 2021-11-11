@@ -5,7 +5,11 @@ public static class DataStructureHelper
 {
     #region 链表处理
 
-    //从数组生成链表
+    /// <summary>
+    /// 从数组生成链表
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <returns></returns>
     public static ListNode GenerateLinkedListFromArray(int[] nums)
     {
         var dummy = new ListNode();

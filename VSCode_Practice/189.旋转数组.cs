@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-public class Solution {
+public class Solution189 {
     public void Test()
     {
         var nums = new int[]{1,2,3,4,5,6,7};
