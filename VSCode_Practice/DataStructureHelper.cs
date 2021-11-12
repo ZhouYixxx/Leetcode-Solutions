@@ -23,7 +23,11 @@ public static class DataStructureHelper
         return dummy.next;
     }
 
-    //从链表生成数组
+    /// <summary>
+    /// 从链表生成数组
+    /// </summary>
+    /// <param name="node"></param>
+    /// <returns></returns>
     public static int[] ToArray(this ListNode node)
     {
         var list = new List<int>();
@@ -41,7 +45,7 @@ public static class DataStructureHelper
     /// <summary>
     /// 从数组生成二叉树，数组应该是按二叉树的层依次写入的,允许省略非必要的null值,参考LeetCode题目中的常见写法
     /// </summary>
-    /// <param name="nums"></param>
+    /// <param name="nums">包含二叉树每个节点的值，占位的null不能省略</param>
     /// <returns></returns>
     public static TreeNode GenerateTreeFromArray(int?[] nums)
     {
@@ -58,6 +62,32 @@ public static class DataStructureHelper
         SearchEachLevel(nums,0,dic,0,0);
         var root = dic[0];
         return root;
+    }
+
+    /// <summary>
+    /// 二叉树层序生成数组
+    /// </summary>
+    /// <param name="root">根节点</param>
+    /// <returns></returns>
+    public static int[] ToArray(this TreeNode root)
+    {
+        var list = new List<int>();
+        var queue = new Queue<TreeNode>();
+        queue.Enqueue(root);
+        while (queue.Count > 0)
+        {
+            var node = queue.Dequeue();
+            list.Add(node.val);
+            if (node.left != null)
+            {
+                queue.Enqueue(node.left);
+            }
+            if (node.right != null)
+            {
+                queue.Enqueue(node.right);
+            }
+        }
+        return list.ToArray();
     }
 
     /// <summary>

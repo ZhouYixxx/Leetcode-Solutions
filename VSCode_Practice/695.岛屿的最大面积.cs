@@ -98,6 +98,47 @@ public class Solution695 {
         return maxArea;
     }
 
+    /// <summary>
+    /// DFS
+    /// </summary>
+    /// <param name="grid"></param>
+    /// <returns></returns>
+    public int DFS(int[][] grid)
+    {
+        var visited = new bool[grid.Length][];
+        for (int i = 0; i < visited.Length; i++)
+        {
+            visited[i] = new bool[grid[i].Length];
+        }
+        var maxArea = 0;
+        for (int i = 0; i < grid.Length; i++)
+        {
+            for (int j = 0; j < grid[i].Length; j++)
+            {
+                if (grid[i][j] == 0 || visited[i][j]) 
+                    continue;
+                var area = GetArea(grid, i,j, visited);
+                maxArea = Math.Max(area, maxArea);
+            }
+        }
+        return maxArea;
+    }
+
+    private int GetArea(int[][] grid, int cur_i, int cur_j, bool[][] visited)
+    {
+        if (cur_i < 0 || cur_j < 0 || cur_i >= grid.Length || cur_j >= grid[0].Length || 
+                grid[cur_i][cur_j] != 1 || visited[cur_i][cur_j])
+        {
+            return 0;
+        }
+        var ans = 1;
+        visited[cur_i][cur_j] = true;
+        ans += GetArea(grid, cur_i-1, cur_j, visited);
+        ans += GetArea(grid, cur_i, cur_j-1, visited);
+        ans += GetArea(grid, cur_i+1, cur_j, visited);
+        ans += GetArea(grid, cur_i, cur_j+1, visited);
+        return ans;
+    }
 }
 // @lc code=end
 
