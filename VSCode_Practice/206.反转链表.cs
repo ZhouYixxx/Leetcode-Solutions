@@ -19,7 +19,7 @@
 public class Solution206 {
     public void Test()
     {
-        var node = DataStructureHelper.GenerateLinkedListFromArray(new int[]{1});
+        var node = DataStructureHelper.GenerateLinkedListFromArray(new int[]{1,2,3,4,5});
         var node1 = ReverseList(node);
         var ans = node1.ToArray();
     }
@@ -41,6 +41,37 @@ public class Solution206 {
             next = temp;
         }
         return cur;
+    }
+
+    public ListNode ReverseList1(ListNode head) 
+    {
+        if (head == null)
+        {
+            return null;
+        }
+        var cur = head;
+        var next = cur.next;
+        cur.next = null;
+        while (next != null)
+        {
+            var temp = next.next;
+            next.next = cur;
+            cur = next;
+            next = temp;    
+        }
+        return cur;
+    }
+
+    public ListNode Recursive(ListNode head)
+    {
+        if (head.next == null)
+        {
+            return head;
+        }
+        var newHead = Recursive(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
     }
 }
 // @lc code=end

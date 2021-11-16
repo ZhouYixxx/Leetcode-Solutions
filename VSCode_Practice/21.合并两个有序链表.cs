@@ -65,6 +65,46 @@ public class Solution21 {
         }
         return dummy.next;
     }
+
+    public ListNode MergeTwoLists1(ListNode l1, ListNode l2)
+    {
+        if (l1 == null && l2 == null)
+        {
+            return null;
+        }
+        var dummy = new ListNode(-1);
+        var node = dummy;
+        var cur1 = l1;
+        var cur2 = l2;
+        while (cur1 != null && cur2 != null)
+        {
+            if (cur1.val <= cur2.val)
+            {
+                node.next = cur1;
+                cur1 = cur1.next;
+                node = node.next;
+            }
+            else
+            {
+                node.next = cur2;
+                cur2 = cur2.next;
+                node = node.next;
+            }
+        }
+        while (cur1 != null)
+        {
+            node.next = cur1;
+            cur1 = cur1.next;
+            node = node.next;
+        }
+        while (cur2 != null)
+        {
+            node.next = cur2;
+            cur2 = cur2.next;
+            node = node.next;
+        }
+        return dummy.next;
+    }
 }
 // @lc code=end
 
