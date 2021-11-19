@@ -28,6 +28,7 @@ public class Solution46 {
         if (tempRes.Count == nums.Length)
         {
             res.Add(new List<int>(tempRes));
+            return;
         }
         for (int i = 0; i < nums.Length; i++)
         {

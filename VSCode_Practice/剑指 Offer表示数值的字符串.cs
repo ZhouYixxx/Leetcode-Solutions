@@ -1,9 +1,12 @@
+using System.Collections.Generic;
+using System;
+
 public class Solution_Offer20 {
     
     public void Test()
     {
-        var s = " 6e6.5 ";
-        var ans = IsNumber(s);
+        var s = " T3";
+        var ans = IsNumberFSM(s);
     }
     public bool IsNumber(string s) 
     {
@@ -78,5 +81,49 @@ public class Solution_Offer20 {
             demicalCount++;
         }
         return demicalCount > 0;
+    }
+
+    public bool IsNumberFSM(string s)
+    {
+        var states = new Dictionary<char,int>[]
+        {
+            new Dictionary<char,int>(){{' ',0},{'s',1}, {'d',2}, {'.', 4}}, //case 0:空格后可以是空格、数字、±号、小数点
+            new Dictionary<char,int>(){{'d',2},{'.',4}}, //case 1
+            new Dictionary<char,int>(){{'d',2},{'.',3},{'e',5},{' ',8}}, //case 2
+            new Dictionary<char,int>(){{'d',3},{'e',5},{' ',8}}, //case 3
+            new Dictionary<char,int>(){{'d',3}}, //case 4
+            new Dictionary<char,int>(){{'s',6},{'d',7}}, //case 5
+            new Dictionary<char,int>(){{'d',7}}, //case 6
+            new Dictionary<char,int>(){{'d',7},{' ',8}}, //case 7
+            new Dictionary<char,int>(){{' ',8}}, //case 8
+        };
+        int p = 0;
+        for (int i = 0; i < s.Length; i++)
+        {
+            char t = 'a';
+            var c = s[i];
+            if (c >= '0' && c <= '9')
+            {
+                t = 'd';
+            }
+            if (c == '+' || c == '-')
+            {
+                t = 's';
+            }
+            if (c == 'e' || c == 'E')
+            {
+                t = 'e';
+            }
+            if (c == ' ' || c == '.')
+            {
+                t = c;
+            }
+            if (!states[p].ContainsKey(t))
+            {
+                return false;
+            }
+            p = states[p][t];
+        }
+        return p == 2 || p == 3 || p == 7 || p == 8;
     }
 }
