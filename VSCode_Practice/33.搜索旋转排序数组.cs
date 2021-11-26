@@ -10,9 +10,9 @@ using System;
 public class Solution33 {
     public void Test()
     {
-        var nums = new int[]{3,1};
-        var target = 3;
-        var ans = Search(nums, target);
+        var nums = new int[]{5,1,3};
+        var target = 5;
+        var ans = Search1(nums, target);
     }
 
     public int Search(int[] nums, int target) 
@@ -54,6 +54,52 @@ public class Solution33 {
                 else
                 {
                     r = mid-1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /// <summary>
+    /// 2021.11.25
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public int Search1(int[] nums, int target) 
+    {
+        int l = 0, r = nums.Length-1;
+        while (l <= r)
+        {
+            if (l == r)
+            {
+                return nums[l] == target ? l : -1;
+            }
+            var mid = (l+r)/2;
+            if (nums[mid] == target)
+            {
+                return mid;
+            }
+            if (nums[mid] >= nums[l])
+            {
+                if (nums[mid] > target && nums[l] <= target)
+                {
+                    r = mid;
+                }
+                else
+                {
+                    l = mid+1;
+                }
+            }
+            else
+            {
+                if (nums[mid] < target && nums[r] >=target)
+                {
+                    l = mid+1;
+                }
+                else
+                {
+                    r = mid;
                 }
             }
         }

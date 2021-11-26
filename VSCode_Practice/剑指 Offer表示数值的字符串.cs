@@ -87,9 +87,9 @@ public class Solution_Offer20 {
     {
         var states = new Dictionary<char,int>[]
         {
-            new Dictionary<char,int>(){{' ',0},{'s',1}, {'d',2}, {'.', 4}}, //case 0:空格后可以是空格、数字、±号、小数点
-            new Dictionary<char,int>(){{'d',2},{'.',4}}, //case 1
-            new Dictionary<char,int>(){{'d',2},{'.',3},{'e',5},{' ',8}}, //case 2
+            new Dictionary<char,int>(){{' ',0},{'s',1}, {'d',2}, {'.', 4}}, //case 0：空格后可以是空格、数字、±号、小数点
+            new Dictionary<char,int>(){{'d',2},{'.',4}}, //case 1：E之前的正负号：后面可以跟数字、小数点
+            new Dictionary<char,int>(){{'d',2},{'.',3},{'e',5},{' ',8}}, //case 2：
             new Dictionary<char,int>(){{'d',3},{'e',5},{' ',8}}, //case 3
             new Dictionary<char,int>(){{'d',3}}, //case 4
             new Dictionary<char,int>(){{'s',6},{'d',7}}, //case 5

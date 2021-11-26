@@ -25,11 +25,11 @@ public class MinStack {
     }
     
     public int Top() {
-
+        return 0;
     }
     
     public int GetMin() {
-
+        return 0;
     }
 }
 

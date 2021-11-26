@@ -10,12 +10,12 @@ using System;
 public class Solution153 {
     public void Test()
     {
-        var nums = new int[]{10,11,12,13,14,0,4,5,6,7,8};
-        var ans = FindMin(nums);
+        var nums = new int[]{3,4,5,1,2};
+        var ans = FindMin2(nums);
     }
 
     
-    public int FindMin2(int[] nums) 
+    public int FindMin1(int[] nums) 
     {
         var l = 0;
         var r = nums.Length-1;
@@ -65,6 +65,39 @@ public class Solution153 {
                 return nums[l];
             }
             var mid = l+(r-l)/2;
+            if (nums[mid] > nums[r])
+            {
+                l = mid+1;
+                continue;
+            }
+            if (nums[mid] < nums[r])
+            {
+                r = mid;
+                continue;
+            }
+        }
+        return nums[l];
+    }
+
+    /// <summary>
+    /// 2021.11.26
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <returns></returns>
+    public int FindMin2(int[] nums)
+    {
+        int l = 0, r = nums.Length-1;
+        if (nums[l] < nums[r])
+        {
+            return nums[l];
+        }
+        while (l <= r)
+        {
+            if (l == r)
+            {
+                return nums[l];
+            }
+            var mid = (l + r) / 2;
             if (nums[mid] > nums[r])
             {
                 l = mid+1;

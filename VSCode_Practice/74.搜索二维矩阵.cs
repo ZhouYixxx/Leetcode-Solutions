@@ -13,11 +13,11 @@ public class Solution74 {
             new int[]{10,11,16,20},
             new int[]{23,30,34,60},
         };
-        // var matrix = new int[][]{
-        //     new int[]{5,8}
-        // };
-        var target = 60;
-        var ans = SearchMatrix(matrix,target);
+        var matrix1 = new int[][]{
+            new int[]{5,8}
+        };
+        var target = 7;
+        var ans = SearchMatrix1(matrix1,target);
     }
 
     public bool SearchMatrix(int[][] matrix, int target) 
@@ -59,6 +59,65 @@ public class Solution74 {
             if (matrix[row][mid] > target)
             {
                 right = mid-1;
+            }
+            else
+            {
+                left = mid+1;
+            }
+        }
+        return false;
+    }
+
+    public bool SearchMatrix1(int[][] matrix, int target)
+    {
+        var m = matrix.Length;
+        var n = matrix[0].Length;
+        //先确定在第几行
+        int low = 0, high = m-1;
+        while (low <= high)
+        {
+            if (low == high)
+            {
+                if (matrix[low][n-1] == target)
+                {
+                    return true;
+                }
+                if (matrix[low][n-1] < target)
+                {
+                    return false;
+                }
+                break;
+            }
+            var mid = (low+high)/2;
+            if (matrix[mid][n-1] == target)
+            {
+                return true;
+            }
+            if (matrix[mid][n-1] > target)
+            {
+                high = mid;
+            }
+            else
+            {
+                low = mid+1;
+            }
+        }
+        var row = high >= m ? m-1 : high;
+        int left = 0, right = n-1;
+        while (left <= right)
+        {
+            if (left == right)
+            {
+                return matrix[row][left] == target;
+            }
+            var mid = (left+right)/2;
+            if (matrix[row][mid] == target)
+            {
+                return true;
+            }
+            if (matrix[row][mid] > target)
+            {
+                right = mid;
             }
             else
             {

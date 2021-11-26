@@ -11,10 +11,10 @@ public class Solution154 {
     public void Test()
     {
         //var nums = new int[]{2,2,1,2,2,2,2,2,2,2,2};
-        //var nums = new int[]{2,2,2,2,2,2,2,2,1,2,2};
+        var nums = new int[]{2,2,2,2,2,2,2,2,1,2,2};
         //var nums = new int[]{2,2,3,0,0,1,1,2};
-        var nums = new int[]{1,1,1,1,0};
-        var ans = FindMin(nums);
+        //var nums = new int[]{1,1,1,1,0};
+        var ans = FindMin1(nums);
     }
     public int FindMin(int[] nums) 
     {
@@ -62,6 +62,38 @@ public class Solution154 {
             }
         }
         return min;
+    }
+
+    /// <summary>
+    /// 2021.11.26
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <returns></returns>
+    public int FindMin1(int[] nums)
+    {
+        int l = 0, r = nums.Length-1;
+        while (l <= r)
+        {
+            if (l == r)
+            {
+                return nums[l];
+            }
+            var mid = (l+r)/2;
+            if (nums[mid] == nums[r])
+            {
+                r--;
+                continue;
+            }
+            if (nums[mid] > nums[r])
+            {
+                l = mid+1;
+            }
+            if (nums[mid] < nums[r])
+            {
+                r = mid;    
+            }
+        }
+        return nums[l];
     }
 }
 // @lc code=end
