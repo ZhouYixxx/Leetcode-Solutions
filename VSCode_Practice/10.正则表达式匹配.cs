@@ -5,6 +5,8 @@
  */
 
 // @lc code=start
+using System;
+
 public class Solution010 {
     public void Test()
     {
@@ -52,6 +54,46 @@ public class Solution010 {
             }
         }
         return dp[s.Length,p.Length];
+    }
+
+    public bool IsMatch2(string s , string p)
+    {
+        bool isMatch = false;
+        BackTrack(s, p, 0, 0, isMatch);
+        return isMatch;
+    }
+
+    private void BackTrack(string s, string p, int si, int pj, bool isMatch)
+    {
+        if (pj == p.Length)
+        {
+            if (si == s.Length)
+            {
+                isMatch = true;
+            }
+            return;
+        }
+
+        if (p[pj] == '.')
+        {
+            BackTrack(s, p, si+1, pj+1, isMatch);
+        }
+        else if (p[pj] == '*')
+        {
+            for (int k = si; k < s.Length; k++)
+            {
+                if (s[k] != s[si])
+                    break;
+                BackTrack(s, p, k, pj+1, isMatch);
+            }
+        }
+        else
+        {
+            if (si < s.Length && s[si] == p[pj])
+            {
+                BackTrack(s, p, si+1, pj+1, isMatch);
+            }
+        }
     }
 }
 // @lc code=end
