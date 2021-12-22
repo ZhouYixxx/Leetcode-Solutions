@@ -64,6 +64,34 @@ public static class DataStructureHelper
         return root;
     }
 
+    public static TreeNode GetNode(this TreeNode root, int val)
+    {
+        return DFS(root,val);
+    }
+
+    private static TreeNode DFS(TreeNode root, int val)
+    {
+        if (root == null)
+        {
+            return null;
+        }
+        if (root.val == val)
+        {
+            return root;
+        }
+        var left = GetNode(root.left, val);
+        if (left != null)
+        {
+            return left;
+        }
+        var right = GetNode(root.right, val);
+        if (right != null)
+        {
+            return right;
+        }
+        return null;
+    }
+
     /// <summary>
     /// 二叉树层序生成数组
     /// </summary>
