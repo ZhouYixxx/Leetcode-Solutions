@@ -58,7 +58,6 @@ public class Solution144 {
         while (stack.Count > 0)
         {
             var node = stack.Pop();
-            list.Add(node.val);
             if (node.right != null)
             {
                 stack.Push(node.right);
@@ -67,6 +66,7 @@ public class Solution144 {
             {
                 stack.Push(node.left);
             }
+            list.Add(node.val);
         }
     }
 
