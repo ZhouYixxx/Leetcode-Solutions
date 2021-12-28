@@ -54,19 +54,19 @@ public class Solution144 {
             return;
         }
         var stack = new Stack<TreeNode>();
-        stack.Push(root);
-        while (stack.Count > 0)
+        while (root != null || stack.Count > 0)
         {
-            var node = stack.Pop();
-            if (node.right != null)
+            if (root != null)
             {
-                stack.Push(node.right);
+                list.Add(root.val);
+                stack.Push(root);
+                root = root.left;
             }
-            if (node.left != null)
+            else
             {
-                stack.Push(node.left);
+                var node = stack.Pop();
+                root = node.right;
             }
-            list.Add(node.val);
         }
     }
 

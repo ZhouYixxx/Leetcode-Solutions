@@ -24,9 +24,9 @@ using System.Collections.Generic;
 public class Solution94 {
     public void Test()
     {
-        var nodes = new int?[]{1,null,2,};
+        var nodes = new int?[]{1,2,3,4,5,6};
         var root = DataStructureHelper.GenerateTreeFromArray(nodes);
-        var ans = InorderTraversal(root);
+        var ans = InorderTraversal1(root);
     }
 
     //前序中序后序统一的写法
@@ -62,6 +62,35 @@ public class Solution94 {
             {
                 //第二次访问才会添加到list中
                 res.Add(node.val);
+            }
+        }
+        return res;
+    }
+
+    public IList<int> InorderTraversal1(TreeNode root) 
+    {
+        if (root == null)
+        {
+            return new List<int>();
+        }
+        var res =  new List<int>(); 
+        var stack = new Stack<TreeNode>();
+        var curNode = root;
+        while (curNode != null || stack.Count > 0)
+        {
+			//不断往左子树方向走，每走一次就将当前节点保存到栈中
+            if (curNode != null)
+            {
+                stack.Push(curNode);
+                curNode = curNode.left;
+            }
+			//当前节点为空，说明左边走到头了，从栈中弹出节点并保存
+			//然后转向右边节点，继续上面整个过程
+            else
+            {
+                var node = stack.Pop();
+                res.Add(node.val);
+                curNode = node.right;
             }
         }
         return res;

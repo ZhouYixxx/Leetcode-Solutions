@@ -63,15 +63,13 @@ public class Solution589 {
         stack.Push(node);
         while (stack.Count > 0)
         {
-            //把当前节点入栈
-            node = stack.Pop();
-            res.Add(node.val);
-            if (node.children != null)
-            {            
-                //把所有子节点从右到左入栈
-                for (int i = 0; i < node.children.Count; i++)
+            var top = stack.Pop();
+            res.Add(top.val);
+            if (top.children != null)
+            {
+                for (int i = top.children.Count-1; i >= 0; i--)
                 {
-                    var child = node.children[i];
+                    var child = top.children[i];
                     if (child != null)
                     {
                         stack.Push(child);

@@ -144,7 +144,7 @@ public class Solution1028 {
             }
             stack.Push(curNode);
         }
-        return root;;
+        return root;
     }
 }
 // @lc code=end
