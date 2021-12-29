@@ -3,6 +3,80 @@ using System.Collections.Generic;
 
 public static class DataStructureHelper
 {
+    #region 字符串
+
+    /// <summary>
+    /// 将形如[[1,2,3],[2,3,4]]的字符串转为int[][]
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static int[][] ConvertStringToTwoDimenArray(string str)
+    {
+        var res = new List<int[]>();
+        var stack = new Stack<char>();
+        int start = 0;
+        int end = 0;
+        for (int i = 0; i < str.Length; i++)
+        {
+            var ch = str[i];
+            if (ch == '[')
+            {
+                if (stack.Count == 1)
+                {
+                    start = i;
+                }
+                stack.Push(ch);
+            }
+            else if (ch == ']')
+            {
+                if (stack.Count == 2)
+                {
+                    end = i;
+                    var tempRes = ConvertStringToArrayInternal(str,start, end);
+                    res.Add(tempRes);
+                    stack.Pop();
+                }
+            }
+        }
+        return res.ToArray();
+    }
+
+    /// <summary>
+    /// 将形如[1,2,3]的字符串转为int[]
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static int[] ConvertStringToArray(string str)
+    {
+        return ConvertStringToArrayInternal(str, 0, str.Length-1);
+    }
+
+    private static int[] ConvertStringToArrayInternal(string str, int start, int end)
+    {
+        var res = new List<int>();
+        int val = 0;
+        for (int i = start; i <= end; i++)
+        {
+            if (str[i] == '[')
+            {
+                continue;
+            }
+            if (str[i] <= '9' && str[i] >= '0')
+            {
+                var digit = (int)str[i] - 48;
+                val = val*10 + digit;
+            }
+            if (str[i] == ',' || (i == end && str[i] == ']'))
+            {
+                res.Add(val);
+                val = 0;
+            }
+        }
+        return res.ToArray();
+    }
+
+    #endregion
+
     #region 链表处理
 
     /// <summary>
