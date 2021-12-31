@@ -20,7 +20,7 @@ public class Solution684 {
             new int[]{2,5},
             new int[]{3,6},
         };
-        var ans = FindRedundantConnection(edges);
+        var ans = TopoSort(edges);
     }
 
     /// <summary>
@@ -125,13 +125,79 @@ public class Solution684 {
         return null;
     }
 
-    private int Find(int x, int[] unionFind)
+    private int Find(int x, int[] root)
     {
-        while (x != unionFind[x])
+        if (root[x] == x)
         {
-            x = unionFind[x];
+            return x;
         }
-        return x;
+        root[x] = Find(root[x], root);
+        return root[x];
+    }
+
+    /// <summary>
+    /// 拓扑排序
+    /// </summary>
+    /// <param name="edges"></param>
+    /// <returns></returns>
+    public int[] TopoSort(int[][] edges)
+    {
+        var n = edges.Length;
+        var graph = new List<int>[n+1];
+        var enterDeg = new int[n+1];
+        //构建邻接表和入度表（无向图，初始入度为1）
+        for (int i = 0; i < n; i++)
+        {
+            var edge = edges[i];
+            if (graph[edge[0]] == null)
+                graph[edge[0]] = new List<int>(){edge[1]};
+            else
+                graph[edge[0]].Add(edge[1]);
+
+            if (graph[edge[1]] == null)
+                graph[edge[1]] = new List<int>(){edge[0]};
+            else
+                graph[edge[1]].Add(edge[0]);
+            
+            enterDeg[edge[0]]+=1;
+            enterDeg[edge[1]]+=1;
+        }
+        int count = 0;
+        var queue = new Queue<int>();
+        for (int i = 1; i <= n; i++)
+        {
+            if (enterDeg[i] == 1)
+            {
+                queue.Enqueue(i);
+                count++;
+            }
+        }
+        while (queue.Count > 0)
+        {
+            var node = queue.Dequeue();
+            enterDeg[node] = 0;
+            var neighbors = graph[node];
+            foreach (var neighbor in neighbors)
+            {
+                if (enterDeg[neighbor] == 0)
+                {
+                    continue;
+                }
+                enterDeg[neighbor] -= 1;
+                if (enterDeg[neighbor] == 1)
+                {
+                    queue.Enqueue(neighbor);
+                }
+            }
+        }
+        for (int i = n-1; i >= 0; i--)
+        {
+            if (enterDeg[edges[i][0]] > 1 && enterDeg[edges[i][1]] > 1)
+            {
+                return edges[i];
+            }
+        }
+        return null;
     } 
 }
 // @lc code=end

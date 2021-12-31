@@ -53,6 +53,10 @@ public static class DataStructureHelper
 
     private static int[] ConvertStringToArrayInternal(string str, int start, int end)
     {
+        if (end <= start + 1)
+        {
+            return new int[0];
+        }
         var res = new List<int>();
         int val = 0;
         for (int i = start; i <= end; i++)
