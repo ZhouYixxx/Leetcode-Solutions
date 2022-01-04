@@ -46,6 +46,7 @@ public class Solution785 {
 
     private bool DFS(int i, int[][] graph, int[] colors, int color)
     {
+        //已被染色且和当前颜色不一致，返回false
         if (colors[i] != 0 && color != colors[i])
         {
             return false;
