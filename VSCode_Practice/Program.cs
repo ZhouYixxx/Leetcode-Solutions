@@ -10,7 +10,7 @@ namespace study
         private static int[] _nums = new int[1000];
         static void Main(string[] args)
         {
-            var sol = new Solution210();
+            var sol = new Solution886();
             sol.Test(); 
 
             //aggregate用法测试
