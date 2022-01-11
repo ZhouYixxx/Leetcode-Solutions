@@ -9,7 +9,7 @@ public class Solution785 {
     public void Test()
     {
         var s ="[[1,2,3],[0,2],[0,1,3],[0,2]]";
-        var g = DataStructureHelper.ConvertStringToTwoDimenArray(s);
+        var g = DataStructureHelper.ConvertStringToTwoDimenNumArray(s);
         var ans = IsBipartite(g);
     }
 

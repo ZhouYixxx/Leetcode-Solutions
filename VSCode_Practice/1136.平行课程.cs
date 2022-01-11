@@ -6,7 +6,7 @@ public class Solution1136
     {
         var s = "[[1,2],[2,3],[3,1]]";
         int n = 3;
-        var relations = DataStructureHelper.ConvertStringToTwoDimenArray(s);
+        var relations = DataStructureHelper.ConvertStringToTwoDimenNumArray(s);
         var ans = MinimumSemesters(n, relations);
     }
 

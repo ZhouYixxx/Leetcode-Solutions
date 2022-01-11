@@ -13,7 +13,7 @@ public class Solution207 {
     {
         var s = "[[1,0]]";
         var n = 2;
-        var g = DataStructureHelper.ConvertStringToTwoDimenArray(s);
+        var g = DataStructureHelper.ConvertStringToTwoDimenNumArray(s);
         var ans = CanFinish(n,g);
     }
 

@@ -9,7 +9,7 @@ public class Solution913 {
     public void Test()
     {
         var s = "[[2,5],[3],[0,4,5],[1,4,5],[2,3],[0,2,3]]";
-        var g = DataStructureHelper.ConvertStringToTwoDimenArray(s);
+        var g = DataStructureHelper.ConvertStringToTwoDimenNumArray(s);
         var ans = CatMouseGame(g);
     }
 

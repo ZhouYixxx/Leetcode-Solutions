@@ -53,6 +53,39 @@ public class Solution46 {
             tempRes.RemoveAt(tempRes.Count-1);
         }
     }
+
+    #region 2022.01.06
+
+    public IList<IList<int>> Permute2(int[] nums) 
+    {
+        var list = new List<IList<int>>();
+        var visited = new bool[nums.Length];
+        BackTrack2(nums, visited, list, new List<int>());
+        return list;
+    }
+
+    private void BackTrack2(int[] nums, bool[] visited, IList<IList<int>> res, List<int> path)
+    {
+        if (path.Count == nums.Length)
+        {
+            res.Add(new List<int>(path));
+            return;
+        }
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (visited[i])
+            {
+                continue;
+            }
+            visited[i] = true;
+            path.Add(nums[i]);
+            BackTrack2(nums, visited, res, path);
+            visited[i] = false;
+            path.RemoveAt(path.Count -1);
+        }
+    }
+         
+    #endregion
 }
 // @lc code=end
 

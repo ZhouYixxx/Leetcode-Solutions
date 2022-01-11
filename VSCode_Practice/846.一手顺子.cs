@@ -12,7 +12,7 @@ public class Solution846 {
     public void Test()
     {
         var s = "[1,2,3,6,2,3,4,7,8]";
-        var hand = DataStructureHelper.ConvertStringToArray(s);
+        var hand = DataStructureHelper.ConvertStringToNumArray(s);
         int groupSize = 3;
         var ans = IsNStraightHand(hand, groupSize);
     }

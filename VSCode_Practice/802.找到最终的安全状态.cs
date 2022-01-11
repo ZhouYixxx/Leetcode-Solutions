@@ -12,7 +12,7 @@ public class Solution802
     public void Test()
     {
         var s = "[[1,2],[2,3],[5],[0],[5],[],[]]";
-        var graph = DataStructureHelper.ConvertStringToTwoDimenArray(s);
+        var graph = DataStructureHelper.ConvertStringToTwoDimenNumArray(s);
         var ans = EventualSafeNodes(graph);
     }
 

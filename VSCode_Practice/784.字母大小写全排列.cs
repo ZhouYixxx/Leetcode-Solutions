@@ -10,8 +10,8 @@ using System.Collections.Generic;
 public class Solution784 {
     public void Test()
     {
-        var s = "ab";
-        var res = LetterCasePermutation(s);
+        var s = "a1b2";
+        var res = LetterCasePermutation2(s);
     }
 
     public IList<string> LetterCasePermutation(string s) 
@@ -89,6 +89,49 @@ public class Solution784 {
         }
     }
     
+    #region 2022.01.11
+
+    public IList<string> LetterCasePermutation2(string s) 
+    {
+        var res = new List<string>();
+        var charArray = s.ToCharArray();
+        BackTrack2(0, s, new List<char>(), res);
+        return res;
+    }
+
+    private void BackTrack2(int i, string s, List<char> path, List<string> res)
+    {
+        if (i >= s.Length)
+        {
+            res.Add(new string(path.ToArray()));
+            return;
+        }
+        if (s[i] <= '9' && s[i] >= '0')
+        {
+            path.Add(s[i]);
+            BackTrack2(i+1, s, path, res);
+            // int m = path.Count-1;
+            // while (m > i)
+            // {
+            //     path.RemoveAt(m--);    
+            // }
+        }
+        else
+        {
+            path.Add(s[i]);
+            BackTrack2(i+1, s, path, res);
+            int k = path.Count-1;
+            while (k > i)
+            {
+                path.RemoveAt(k--);    
+            }
+            var ch = s[i] <= 'z' && s[i] >= 'a' ? (char)((int)s[i]-32) : (char)((int)s[i]+32);
+            path.Add(ch);
+            BackTrack2(i+1, s, path, res);   
+        }
+    }
+         
+    #endregion
 }
 // @lc code=end
 

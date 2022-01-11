@@ -13,7 +13,7 @@ public class Solution886
     {
         var n = 5;
         var s = "[[1,2],[2,3],[3,4],[4,5],[1,5]]";
-        var g = DataStructureHelper.ConvertStringToTwoDimenArray(s);
+        var g = DataStructureHelper.ConvertStringToTwoDimenNumArray(s);
         var ans = PossibleBipartition(n, g);
     }
 

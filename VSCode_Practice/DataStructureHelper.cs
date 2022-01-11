@@ -10,7 +10,7 @@ public static class DataStructureHelper
     /// </summary>
     /// <param name="str"></param>
     /// <returns></returns>
-    public static int[][] ConvertStringToTwoDimenArray(string str)
+    public static int[][] ConvertStringToTwoDimenNumArray(string str)
     {
         var res = new List<int[]>();
         var stack = new Stack<char>();
@@ -32,7 +32,7 @@ public static class DataStructureHelper
                 if (stack.Count == 2)
                 {
                     end = i;
-                    var tempRes = ConvertStringToArrayInternal(str,start, end);
+                    var tempRes = ConvertStringToNumArrayInternal(str,start, end);
                     res.Add(tempRes);
                     stack.Pop();
                 }
@@ -46,12 +46,12 @@ public static class DataStructureHelper
     /// </summary>
     /// <param name="str"></param>
     /// <returns></returns>
-    public static int[] ConvertStringToArray(string str)
+    public static int[] ConvertStringToNumArray(string str)
     {
-        return ConvertStringToArrayInternal(str, 0, str.Length-1);
+        return ConvertStringToNumArrayInternal(str, 0, str.Length-1);
     }
 
-    private static int[] ConvertStringToArrayInternal(string str, int start, int end)
+    private static int[] ConvertStringToNumArrayInternal(string str, int start, int end)
     {
         if (end <= start + 1)
         {

@@ -12,7 +12,7 @@ public class Solution210
     public void Test()
     {
         var s = "[]";
-        var g = DataStructureHelper.ConvertStringToTwoDimenArray(s);
+        var g = DataStructureHelper.ConvertStringToTwoDimenNumArray(s);
         var n = 1;
         var ans = FindOrder(n,g);
     }

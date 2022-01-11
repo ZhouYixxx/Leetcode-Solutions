@@ -12,7 +12,7 @@ public class Solution51 {
     public void Test()
     {
         var n = 8;
-        var ans = SolveNQueens(n);
+        var ans = SolveNQueens2(n);
     }
 
     public IList<IList<string>> SolveNQueens(int n) 
@@ -90,6 +90,79 @@ public class Solution51 {
             used[newRow++][newCol--] = status;
         }
     }
+
+    #region 2022.01.06
+
+    public IList<IList<string>> SolveNQueens2(int n) 
+    {
+        var res = new List<IList<string>>();
+        var path = new int[n][];
+        for (int i = 0; i < n; i++)
+        {
+            path[i] = new int[n];
+        }
+        BackTrack2(n, 0, res, path);
+        return res;
+    }
+
+    private void BackTrack2(int n, int row, List<IList<String>> res, int[][] path)
+    {
+        if (row == n)
+        {
+            var pathList = ConvertToStr(path);
+            res.Add(pathList);
+            return;
+        }
+        
+        for (int col = 0; col < n; col++)
+        {
+            if (!IsValid2(row, col, path))
+            {
+                continue;
+            }
+            path[row][col] = 1;
+            BackTrack2(n, row+1, res, path);
+            path[row][col] = 0;
+        }
+    }
+
+    private List<string> ConvertToStr(int[][] path)
+    {
+        var res = new List<string>();
+        int n = path.Length;
+        for (int i = 0; i < n; i++)
+        {
+            var chars = new char[n];
+            for (int j = 0; j < n; j++)
+            {
+                chars[j] = path[i][j] == 1 ? 'Q' : '.';
+            }
+            res.Add(new string(chars));
+        }
+        return res;
+    }
+
+    private bool IsValid2(int row, int col, int[][] path)
+    {
+        var n = path.Length;
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (path[i][j] == 0)
+                {
+                    continue;
+                }
+                if (row == i || col == j || Math.Abs(row - i) == Math.Abs(col - j))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    #endregion
 }
 // @lc code=end
 

@@ -12,7 +12,7 @@ public class Solution797
     public void Test()
     {
         var s = "[[4,3,1],[3,2,4],[3],[4],[]]";
-        var g = DataStructureHelper.ConvertStringToTwoDimenArray(s);
+        var g = DataStructureHelper.ConvertStringToTwoDimenNumArray(s);
         var res = AllPathsSourceTarget(g);
     }
 
