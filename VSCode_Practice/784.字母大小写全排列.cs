@@ -110,11 +110,6 @@ public class Solution784 {
         {
             path.Add(s[i]);
             BackTrack2(i+1, s, path, res);
-            // int m = path.Count-1;
-            // while (m > i)
-            // {
-            //     path.RemoveAt(m--);    
-            // }
         }
         else
         {
