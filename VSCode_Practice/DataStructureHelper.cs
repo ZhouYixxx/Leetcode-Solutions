@@ -219,20 +219,24 @@ public static class DataStructureHelper
 
         for (int i = preLevelStart; i <= preLevelEnd && curIndex <= nextEnd; i++)
         {
-            if (nums[i] != null)
+            if (nums[i] == null)
             {
-                var parent = dic[i];
-                if (parent == null)
-                {
-                    continue;
-                }
-                var left = dic[curIndex];
-                var right = curIndex+1 >= nums.Length ? null : dic[curIndex+1];
-                parent.left = left;
-                parent.right = right;
-                curIndex += 2;
+                nextLevelCount -= 2;
+                continue;
             }
+            var parent = dic[i];
+            if (parent == null)
+            {
+                continue;
+            }
+            var left = dic[curIndex];
+            var right = curIndex+1 >= nums.Length ? null : dic[curIndex+1];
+            parent.left = left;
+            parent.right = right;
+            curIndex += 2;
         }
+        nextEnd = nextStart+nextLevelCount-1;
+        nextEnd = nextEnd >= nums.Length ? nums.Length-1 : nextEnd;
         SearchEachLevel(nums,level+1,dic,nextStart,nextEnd);
     }
 
