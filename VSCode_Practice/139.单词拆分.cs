@@ -7,7 +7,7 @@
 // @lc code=start
 using System.Collections.Generic;
 
-public class Solution {
+public class Solution139 {
     public void Test()
     {
         var s ="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab";
