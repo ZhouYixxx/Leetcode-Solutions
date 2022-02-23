@@ -16,4 +16,31 @@ public class Solution169 {
         }
         return major;
     }
+
+    /// <summary>
+    /// 20220222
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <returns></returns>
+    public int MajorityElement1(int[] nums){
+        var majorElement = nums[0];
+        var count = 1;
+        for (int i = 1; i < nums.Length; i++)
+        {
+            if (majorElement != nums[i])
+            {
+                count--;
+            }
+            else
+            {
+                count++;
+            }
+            if (count < 0)
+            {
+                majorElement = nums[i];
+                count = 1;
+            }
+        }
+        return majorElement;
+    }
 }
