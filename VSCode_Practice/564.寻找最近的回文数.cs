@@ -6,8 +6,6 @@
 
 // @lc code=start
 using System;
-using System.Linq;
-using System.Text;
 public class Solution564 {
     public void Test()
     {
