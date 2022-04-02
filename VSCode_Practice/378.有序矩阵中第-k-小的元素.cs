@@ -5,25 +5,47 @@
  */
 
 // @lc code=start
+using System;
 public class Solution378 {
     public void Test()
     {
+        // var mat = new int[][]
+        // {
+        //     new int[]{1,4,7,11,15},
+        //     new int[]{2,5,8,12,19},
+        //     new int[]{3,6,9,16,22},
+        //     new int[]{10,13,14,17,24},
+        //     new int[]{18,21,23,26,30},
+        // };
+        // var mat = new int[][]
+        // {
+        //     new int[]{1,4},
+        //     new int[]{12,100},
+        // };
         var mat = new int[][]
         {
-            new int[]{1,4,7,11,15},
-            new int[]{2,5,8,12,19},
-            new int[]{3,6,9,16,22},
-            new int[]{10,13,14,17,24},
-            new int[]{18,21,23,26,30},
+            new int[]{-5,-4},
+            new int[]{-5,-4},
         };
-        int k = 5;
+        int k = 2;
+        //测试比对
+        var arr = new int[mat.Length*mat.Length];
+        for (int i = 0; i < mat.Length; i++)
+        {
+            for (int j = 0; j < mat.Length; j++)
+            {
+                arr[i*mat.Length + j] = mat[i][j];
+            }
+        }
+        Array.Sort(arr);
+        var trueAns = arr[k-1];
         var ans = KthSmallest(mat, k);
     }
 
     private int n;
 
     public int KthSmallest(int[][] matrix, int k) {
-        //从左上角开始，分别向右向下寻找
+        
         n = matrix.Length;
         if (k == 1)
         {
@@ -37,13 +59,14 @@ public class Solution378 {
             {
                 return l;
             }
-            var mid = (l+r) / 2;
-            var smallerCount = GetSmallerCount(matrix, mid);
-            if (smallerCount == k)
-            {
-                return mid;
-            }
-            if (smallerCount > k)
+            var mid = l + (r - l) / 2;
+            var smallerCount = GetNoBiggerCount(matrix, mid);
+            // if (smallerCount == k)
+            // {
+            //     return mid;
+            // }
+            //smallerCount = k时不能停止搜索
+            if (smallerCount >= k)
             {
                 r = mid;
             }
@@ -60,35 +83,39 @@ public class Solution378 {
     /// </summary>
     /// <param name="num"></param>
     /// <returns></returns>
-    private int GetSmallerCount(int[][] matrix, int num)
+    private int GetNoBiggerCount(int[][] matrix, int num)
     {
         int count = 0;
         //每一行用二分寻找
         for (int i = 0; i < n; i++)
         {
-            //寻找最后一个小于等于num的数的位置
             int l = 0, r = n-1;
+            if (matrix[i][0] > num)
+            {
+                continue;
+            }
+            //寻找最后一个小于等于num的数的位置
             while (l <= r)
             {
                 if (l == r)
                 {
-                    count += l;
+                    count += l+1;
                     break;
                 }
                 var mid = (l+r)/2;
-                if (matrix[i][mid] == num && mid != n-1 && matrix[i][mid+1] != num)
+                if (matrix[i][mid] <= num)
                 {
-                    count += mid;
-                    break;
-                }
-                if (matrix[i][mid] > num)
-                {
-                    r = mid;
+                    if (matrix[i][mid+1] > num)
+                    {
+                        count += mid+1;
+                        break;
+                    }
+                    l = mid+1;
                     continue;
                 }
                 else
                 {
-                    l = mid+1;
+                    r = mid;
                     continue;
                 }
             }
