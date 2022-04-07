@@ -213,10 +213,10 @@ namespace CodePractice.BasicDataStructure.Heap
         /// </summary>
         private void ExpandSize()
         {
-            Capacity = Count * 2 > int.MaxValue ? int.MaxValue : Count * 2;
-            if (Count == int.MaxValue - 1)
+            Capacity = (long)Count * 2 > int.MaxValue ? int.MaxValue : Count * 2;
+            if (Count == int.MaxValue)
             {
-                throw new ArgumentOutOfRangeException($"数组容量不能超过{int.MaxValue - 1}");
+                throw new ArgumentOutOfRangeException($"数组容量不能超过{int.MaxValue}");
             }
             var tempArray = new T[Count];
             for (int i = 0; i < Count; i++)
