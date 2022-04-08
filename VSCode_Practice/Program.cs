@@ -16,7 +16,7 @@ namespace study
             // AsyncTest();
             // System.Console.WriteLine($"222, My Thread ID is :{Thread.CurrentThread.ManagedThreadId}");
             //Console.ReadKey();
-            var sol = new Solution239();
+            var sol = new Solution227();
             sol.Test(); 
 
             //aggregate用法测试
