@@ -20,6 +20,7 @@ public class Solution001 {
     public int[] TwoSum(int[] nums, int target) 
     {
         var dic = new Dictionary<int, int>();
+        
         for (int i = 0; i < nums.Length; i++)
         {
             var val = target - nums[i];
