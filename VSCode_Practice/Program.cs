@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace study
+
+namespace VSCode_Practice
 {
     class Program
     {
         private static int[] _nums = new int[1000];
         static void Main(string[] args)
         {
+            // See https://aka.ms/new-console-template for more information
+            Console.WriteLine("Hello, World!");
             // System.Console.WriteLine($"111, My Thread ID is :{Thread.CurrentThread.ManagedThreadId}");
             // AsyncTest();
             // System.Console.WriteLine($"222, My Thread ID is :{Thread.CurrentThread.ManagedThreadId}");
