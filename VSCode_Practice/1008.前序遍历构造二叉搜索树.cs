@@ -53,8 +53,7 @@ public class Solution1008 {
             right_node_start++;
         }
         var leftNode = DFSHelper(preorder, pre_root+1, pre_root+1, right_node_start-1);
-        var count = right_node_start - pre_root;
-        var rightNode = DFSHelper(preorder, pre_root+count, right_node_start, right);
+        var rightNode = DFSHelper(preorder, right_node_start, right_node_start, right);
         node.left = leftNode;
         node.right = rightNode;
         return node;
