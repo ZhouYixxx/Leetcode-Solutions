@@ -50,7 +50,7 @@ public static class DataStructureHelper
     {
         return ConvertStringToNumArrayInternal(str, 0, str.Length-1);
     }
-
+    
     private static int[] ConvertStringToNumArrayInternal(string str, int start, int end)
     {
         if (end <= start + 1)
