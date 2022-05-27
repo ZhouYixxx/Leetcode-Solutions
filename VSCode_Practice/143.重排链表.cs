@@ -18,15 +18,18 @@
  */
 public class Solution143 {
     public void Test(){
-        var head = DataStructureHelper.GenerateLinkedListFromArray(new int[]{1,2,3});
-        var rev = ReverseLinkedList(head);
+        var head = DataStructureHelper.GenerateLinkedListFromArray(new int[]{1,2,3,4,5,6,7,8,9,10});
         ReorderList(head);
     }
 
     public void ReorderList(ListNode head) {
+        if (head == null || head.next == null)
+        {
+            return;
+        }
         var mid = FindMidNode(head, out var prev);
         prev.next = null;
-        var secondHead = ReverseLinkedList(mid);
+        var secondHead = ReverseLinkedList(mid, out var last);
         head = Merge(head, secondHead);
     }
 
@@ -44,23 +47,33 @@ public class Solution143 {
         return slow;
     }
 
-    private ListNode ReverseLinkedList(ListNode head)
+    /// <summary>
+    /// 递归翻转链表
+    /// </summary>
+    /// <param name="head">当前链表头</param>
+    /// <param name="lastNode">翻转后的链表尾节点</param>
+    /// <returns></returns>
+    private ListNode ReverseLinkedList(ListNode head, out ListNode lastNode)
     {
         if (head == null || head.next == null)
         {
+            lastNode = head;
             return head;
         }
-        var next = ReverseLinkedList(head.next);
-        next.next = head;
+        var next = ReverseLinkedList(head.next, out var subLast);
+        //尾部节点后接head节点
+        subLast.next = head;
         head.next = null;
+        lastNode = head;
         return next;
     }
 
     private ListNode Merge(ListNode head1, ListNode head2){
         var node1 = head1;
         var node2 = head2;
-        var cur = head1;
-        int flag = 2;//标识符,1：取链表1中节点, 2：取链表2中节点
+        var dummy = new ListNode(-1);
+        var cur = dummy;
+        int flag = 1;//标识符,1：取链表1中节点, 2：取链表2中节点
         while (node1 != null && node2 != null)
         {
             if (flag == 2)
@@ -77,7 +90,19 @@ public class Solution143 {
             }
             cur = cur.next;
         }
-        return head1;
+        while (node1 != null)
+        {
+            cur.next = node1;
+            node1 = node1.next;
+            cur = cur.next;
+        }
+        while (node2 != null)
+        {
+            cur.next = node2;
+            node2 = node2.next;
+            cur = cur.next;
+        }
+        return dummy.next;
     }
 }
 // @lc code=end
