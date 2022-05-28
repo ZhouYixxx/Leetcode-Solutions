@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BasicDataStructure\Graph\" />
+    <Compile Remove="BasicDataStructure\Graph\**" />
+    <EmbeddedResource Remove="BasicDataStructure\Graph\**" />
+    <None Remove="BasicDataStructure\Graph\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="LeetCode\Graph\" />
   </ItemGroup>
 

@@ -11,15 +11,17 @@ using System.Collections.Generic;
 public class Solution131 {
     public void Test()
     {
-        var s ="abba";
+        var s ="abbba";
         var ans = Partition(s);
     }
 
     public IList<IList<string>> Partition(string s) {
         var ans = new List<IList<string>>();
         var memo = Pretreatment(s);
-        Dfs(s, 0, memo, new List<string>(), ans);
+        var path = new List<string>();
+        //Dfs(s, 0, memo, new List<string>(), ans);
         //var ans2 = Dfs2(s,0,memo);
+        Dfs3(s, 0, s.Length-1, path, ans);
         return ans;
     }
 
@@ -66,7 +68,7 @@ public class Solution131 {
         return list;
     }
 
-    //用DP记录所有回文子串
+    //用memo提前记录所有回文子串用于快速判断
     private bool[][] Pretreatment(string s)
     {
         var ans = new bool[s.Length][];
@@ -89,6 +91,41 @@ public class Solution131 {
             }
         }
         return ans;
+    }
+
+    /// <summary>
+    /// 回溯
+    /// </summary>
+    private void Dfs3(string s, int start, int end, IList<string> path, IList<IList<string>> res)
+    {
+        if (start == s.Length)
+        {
+            res.Add(new List<string>(path));
+            return;
+        }
+        for (int split_index = start; split_index <= end; split_index++)
+        {
+            if (!IsPalindrome(s, start, split_index))
+            {
+                continue;
+            }
+            var subString = s.Substring(start, split_index - start + 1);
+            path.Add(subString);
+            Dfs3(s, split_index+1, end, path, res);
+            path.RemoveAt(path.Count-1);
+        }
+    }
+
+    private bool IsPalindrome(string s, int start, int end)
+    {
+        for (int i = start, j = end; i <= end && j >= start; i++, j--)
+        {
+            if (s[i] != s[j])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
 // @lc code=end

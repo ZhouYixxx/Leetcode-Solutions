@@ -15,6 +15,8 @@ public class Solution {
         var ans = MaximumScore(nums, mul);
     }
 
+    
+
     public int MaximumScore(int[] nums, int[] multipliers) 
     {
         var n = nums.Length;

@@ -11,9 +11,9 @@ using System.Collections.Generic;
 public class Solution15 {
     public void Test()
     {
-        var nums = new int[]{-1,0,1,2,-1,-4};
+        var nums = new int[]{-2,0,0,2,2};
         //var nums = new int[]{1,-1,-1,0};
-        var ans = ThreeSum(nums);
+        var ans = ThreeSum1(nums);
     }
 
     public IList<IList<int>> ThreeSum(int[] nums) 
@@ -71,6 +71,63 @@ public class Solution15 {
         }
         return res;
     }
+
+    /// <summary>
+    /// 20220222
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <returns></returns>
+    public IList<IList<int>> ThreeSum1(int[] nums) {
+        var ans = new List<IList<int>>();
+        Array.Sort(nums);
+        for (int i = 0; i < nums.Length-2; i++)
+        {
+            var a = nums[i];
+            //由于已经排序，a>0则后面所有数均大于零，不会存在和为0的组合，直接终止循环
+            if (a > 0)
+            {
+                break;
+            }
+            var l = i+1;
+            var r = nums.Length-1;
+            //避免重复
+            if (i > 0 && nums[i] ==nums[i-1])
+            {
+                continue;
+            }
+            while (l < r)
+            {
+                var sum = nums[i] + nums[l] + nums[r];
+                if (sum == 0)
+                {
+                    if (l-1 != i && nums[l] == nums[l-1])
+                    {
+                        l++;
+                        continue;
+                    }
+                    if (r+1 < nums.Length && nums[r] == nums[r+1])
+                    {
+                        r--;
+                        continue;
+                    }
+                    ans.Add(new List<int>(){a,nums[l++],nums[r--]});
+                    continue;
+                }
+                //和太大，r向左移动
+                if (sum > 0)
+                {
+                    r--;
+                }
+                //和太小，l向右移动
+                else
+                {
+                    l++;
+                }
+            }
+        }
+        return ans;
+    }
+
 }
 // @lc code=end
 
