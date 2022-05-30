@@ -34,7 +34,9 @@
                 "run",
                 "${workspaceFolder}/VSCode_Practice.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary",
+                "-finput-charset=UTF-8",
+                "-fexec-charset=UTF-8"
             ],
             "problemMatcher": "$msCompile"
         }
