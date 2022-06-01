@@ -117,6 +117,25 @@ public static class DataStructureHelper
         return list.ToArray();
     }
 
+    /// <summary>
+    /// 反转链表
+    /// </summary>
+    /// <param name="head"></param>
+    /// <returns></returns>
+    public static ListNode Reverse(ListNode head)
+    {
+        var cur = head;
+        ListNode prev = null;
+        while (cur != null)
+        {
+            var nextTemp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = nextTemp;
+        }
+        return prev;
+    }
+
     #endregion
 
     #region 二叉树
