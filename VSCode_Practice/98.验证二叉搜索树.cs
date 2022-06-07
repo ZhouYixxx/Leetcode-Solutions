@@ -30,11 +30,12 @@ public class Solution98 {
         {
             return false;
         }
-        return dfs(root).Item3;
+        return InOrder(root);
+        // return dfs(root).Item3;
     }
 
     /// <summary>
-    /// 
+    /// 递归方法
     /// </summary>
     /// <param name="node"></param>
     /// <returns></returns>
@@ -42,30 +43,58 @@ public class Solution98 {
     {
         if (node == null)
         {
+            //最小值设置为int.MaxValue, 最大值设置为int.MinValue，以便不影响后续的比较
            return new Tuple<int, int, bool>(int.MaxValue, int.MinValue, true); 
         }
         if (node.left == null && node.right == null)
         {
             return new Tuple<int, int, bool>(node.val, node.val, true);
         }
-        //item1：最小值，item2：最大值，item3：是否valid
-        var isLeftValid = dfs(node.left);
-        var isRightValid = dfs(node.right);
-        if (!isLeftValid.Item3 || !isRightValid.Item3)
+        //item1：当前树中的最小值，item2：当前树中最大值，item3：当前树是否是BST
+        var leftValid = dfs(node.left);
+        var rightValid = dfs(node.right);
+        if (!leftValid.Item3 || !rightValid.Item3)
         {
             return new Tuple<int, int, bool>(0,0,false);
         }
-        if (node.left != null && isLeftValid.Item2 >= node.val)
+        if (node.left != null && leftValid.Item2 >= node.val)
         {
             return new Tuple<int, int, bool>(0,0,false);  
         }
-        if (node.right != null && isRightValid.Item1 <= node.val)
+        if (node.right != null && rightValid.Item1 <= node.val)
         {
             return new Tuple<int, int, bool>(0,0,false);  
         }
-        var max = Math.Max(node.val, Math.Max(isLeftValid.Item2, isRightValid.Item2));
-        var min = Math.Min(node.val, Math.Min(isLeftValid.Item1, isRightValid.Item1));
+        var max = Math.Max(node.val, Math.Max(leftValid.Item2, rightValid.Item2));
+        var min = Math.Min(node.val, Math.Min(leftValid.Item1, rightValid.Item1));
         return new Tuple<int, int, bool>(min,max,true);  ;
+    }
+
+    /// <summary>
+    /// 中序遍历结果有序则为BST
+    /// </summary>
+    /// <param name="root"></param>
+    /// <returns></returns>
+    private bool InOrder(TreeNode root){
+        var stack = new Stack<TreeNode>();
+        double pre_val = double.MinValue;
+        var cur = root;
+        while (cur != null || stack.Count > 0)
+        {
+            while (cur != null)
+            {
+                stack.Push(cur);
+                cur = cur.left;
+            }
+            var top = stack.Pop();
+            if (top.val <= pre_val)
+            {
+                return false;
+            }
+            pre_val = top.val;
+            cur = top.right;
+        }
+        return true;
     }
 }
 // @lc code=end
