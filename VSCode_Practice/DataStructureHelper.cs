@@ -50,7 +50,56 @@ public static class DataStructureHelper
     {
         return ConvertStringToNumArrayInternal(str, 0, str.Length-1);
     }
-    
+
+
+    public static int?[] ConvertStringToNullableNumArray(string str)
+    {
+        return ConvertStringToNullableNumArrayInternal(str, 0, str.Length-1);
+    }
+
+    private static int?[] ConvertStringToNullableNumArrayInternal(string str, int start, int end)
+    {
+        str = str.Trim();
+        if (end <= start + 1)
+        {
+            return new int?[0];
+        }
+        var res = new List<int?>();
+        int val = 0;
+        var subStr = "";
+        for (int i = start; i <= end; i++)
+        {
+            if (str[i] == '[')
+            {
+                continue;
+            }
+            if (str[i] <= '9' && str[i] >= '0')
+            {
+                var digit = (int)str[i] - 48;
+                val = val*10 + digit;
+            }
+            if (str[i] == ',' || (i == end && str[i] == ']'))
+            {
+                if (subStr == "null")
+                {
+                    res.Add(null);
+                    subStr = "";
+                }
+                else
+                {
+                    res.Add(val);
+                    val = 0;   
+                }
+            }
+            else
+            {
+                subStr += str[i];
+            }
+        }
+        return res.ToArray();
+    }
+
+
     private static int[] ConvertStringToNumArrayInternal(string str, int start, int end)
     {
         if (end <= start + 1)

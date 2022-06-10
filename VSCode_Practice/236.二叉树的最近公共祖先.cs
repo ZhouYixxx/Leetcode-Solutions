@@ -25,7 +25,7 @@ public class Solution236 {
 
     public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) 
     {
-        //理解递归函数的含义：给定一课树(root)，返回结果为一个节点，该节点是p或q的祖先。如果p/q都未找到祖先则返回null
+        //理解递归函数的含义：给定一课树(root)，返回结果为一个节点，该节点满足：如果不是null，则它是p 或 q的祖先，如果为null，则该树不包含p、q。
         if (root == null || root == p || root == q)
         {
             return root;
