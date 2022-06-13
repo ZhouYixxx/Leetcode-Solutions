@@ -57,6 +57,51 @@ public static class DataStructureHelper
         return ConvertStringToNullableNumArrayInternal(str, 0, str.Length-1);
     }
 
+    /// <summary>
+    /// 将[['a','b'],['c','d']]转化为二维char数组
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static char[][] ConvertStringToTwoDimenCharArray(string str)
+    {
+        var res = new List<char[]>();
+        var stack = new Stack<char>();
+        int start = 0;
+        int end = 0;
+        for (int i = 0; i < str.Length; i++)
+        {
+            var ch = str[i];
+            if (ch == '[')
+            {
+                if (stack.Count == 1)
+                {
+                    start = i;
+                }
+                stack.Push(ch);
+            }
+            else if (ch == ']')
+            {
+                if (stack.Count == 2)
+                {
+                    end = i;
+                    //var subStr = str.Substring(start, end-start+1);
+                    var charArray = new List<char>();
+                    for (int k = start; k <= end; k++)
+                    {
+                        if (str[k] == ',' || str[k] == '\'' || str[k] == '[' || str[k] == ']')
+                        {
+                            continue;
+                        }
+                        charArray.Add(str[k]);
+                    }
+                    res.Add(charArray.ToArray());
+                    stack.Pop();
+                }
+            }
+        }
+        return res.ToArray();
+    }
+
     private static int?[] ConvertStringToNullableNumArrayInternal(string str, int start, int end)
     {
         str = str.Trim();
