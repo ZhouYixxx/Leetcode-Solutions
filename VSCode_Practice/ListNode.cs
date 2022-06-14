@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-
+/// <summary>
+/// 链表节点
+/// </summary>
 public class ListNode 
 {
     public int val;

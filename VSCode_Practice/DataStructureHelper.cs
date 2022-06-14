@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public static class DataStructureHelper
 {
-    #region 字符串
+    #region 字符串处理
 
     /// <summary>
     /// 将形如[[1,2,3],[2,3,4]]的字符串转为int[][]
@@ -100,6 +100,30 @@ public static class DataStructureHelper
             }
         }
         return res.ToArray();
+    }
+
+    /// <summary>
+    /// 从邻接表获取无向图的所有节点
+    /// </summary>
+    /// <returns></returns>
+    public static List<Node> GenerateUDGNodesFromArray(int[][] adjList, int startIndex = 1)
+    {
+        var ans = new List<Node>();
+        for (int i = 0; i < adjList.Length; i++)
+        {
+            var node = new Node(startIndex+i, new List<Node>());
+            ans.Add(node);
+        }
+        for (int i = 0; i < adjList.Length; i++)
+        {
+            var node = ans[i];
+            foreach (var neighborValue in adjList[i])
+            {
+                var neighborNode = ans[neighborValue-startIndex];
+                node.neighbors.Add(neighborNode);
+            }
+        }
+        return ans;
     }
 
     private static int?[] ConvertStringToNullableNumArrayInternal(string str, int start, int end)
@@ -232,7 +256,7 @@ public static class DataStructureHelper
 
     #endregion
 
-    #region 二叉树
+    #region 二叉树处理
     /// <summary>
     /// 从数组生成二叉树，数组应该是按二叉树的层依次写入的,允许省略非必要的null值,参考LeetCode题目中的常见写法
     /// </summary>
@@ -255,6 +279,12 @@ public static class DataStructureHelper
         return root;
     }
 
+    /// <summary>
+    /// 获取指定值的节点
+    /// </summary>
+    /// <param name="root"></param>
+    /// <param name="val"></param>
+    /// <returns></returns>
     public static TreeNode GetNode(this TreeNode root, int val)
     {
         return DFS(root,val);
