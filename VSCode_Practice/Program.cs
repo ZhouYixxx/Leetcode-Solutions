@@ -12,7 +12,7 @@ namespace VSCode_Practice
         {
             // See https://aka.ms/new-console-template for more information
             Console.WriteLine("Hello, World!");
-            var sol = new Solution287();
+            var sol = new Solution260();
             sol.Test(); 
 
             //aggregate用法测试
