@@ -13,7 +13,8 @@ public class Solution264 {
         var ans = NthUglyNumber(n);
     }
 
-    public int NthUglyNumber(int n) {
+    public int NthUglyNumber(int n) 
+    {
         if (n == 1)
         {
             return 1;
@@ -42,6 +43,28 @@ public class Solution264 {
             }
         }
         return res[n-1];
+    }
+
+    public int NthSuperUglyNumber_20220715(int n)
+    {
+        if (n == 1)
+        {
+            return 1;
+        }
+        var dp = new int[n+1];
+        dp[1] = 1;
+        int p2 = 1, p3 = 1, p5 = 1;
+        for (int i = 2; i <= n; i++)
+        {
+            var a = dp[p2]*2;
+            var b = dp[p3]*3;
+            var c = dp[p5]*5;
+            var min = Math.Min(a, Math.Min(b,c));
+            if (min == a) p2++;
+            if (min == b) p3++;
+            if (min == c) p5++;
+        }
+        return dp[n];
     }
 }
 // @lc code=end
