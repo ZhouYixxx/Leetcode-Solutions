@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public static class DataStructureHelper
 {
-    #region 字符串
+    #region 字符串处理
 
     /// <summary>
     /// 将形如[[1,2,3],[2,3,4]]的字符串转为int[][]
@@ -50,7 +50,125 @@ public static class DataStructureHelper
     {
         return ConvertStringToNumArrayInternal(str, 0, str.Length-1);
     }
-    
+
+
+    public static int?[] ConvertStringToNullableNumArray(string str)
+    {
+        return ConvertStringToNullableNumArrayInternal(str, 0, str.Length-1);
+    }
+
+    /// <summary>
+    /// 将[['a','b'],['c','d']]转化为二维char数组
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static char[][] ConvertStringToTwoDimenCharArray(string str)
+    {
+        var res = new List<char[]>();
+        var stack = new Stack<char>();
+        int start = 0;
+        int end = 0;
+        for (int i = 0; i < str.Length; i++)
+        {
+            var ch = str[i];
+            if (ch == '[')
+            {
+                if (stack.Count == 1)
+                {
+                    start = i;
+                }
+                stack.Push(ch);
+            }
+            else if (ch == ']')
+            {
+                if (stack.Count == 2)
+                {
+                    end = i;
+                    //var subStr = str.Substring(start, end-start+1);
+                    var charArray = new List<char>();
+                    for (int k = start; k <= end; k++)
+                    {
+                        if (str[k] == ',' || str[k] == '\'' || str[k] == '[' || str[k] == ']')
+                        {
+                            continue;
+                        }
+                        charArray.Add(str[k]);
+                    }
+                    res.Add(charArray.ToArray());
+                    stack.Pop();
+                }
+            }
+        }
+        return res.ToArray();
+    }
+
+    /// <summary>
+    /// 从邻接表获取无向图的所有节点
+    /// </summary>
+    /// <returns></returns>
+    public static List<Node> GenerateUDGNodesFromArray(int[][] adjList, int startIndex = 1)
+    {
+        var ans = new List<Node>();
+        for (int i = 0; i < adjList.Length; i++)
+        {
+            var node = new Node(startIndex+i, new List<Node>());
+            ans.Add(node);
+        }
+        for (int i = 0; i < adjList.Length; i++)
+        {
+            var node = ans[i];
+            foreach (var neighborValue in adjList[i])
+            {
+                var neighborNode = ans[neighborValue-startIndex];
+                node.neighbors.Add(neighborNode);
+            }
+        }
+        return ans;
+    }
+
+    private static int?[] ConvertStringToNullableNumArrayInternal(string str, int start, int end)
+    {
+        str = str.Trim();
+        if (end <= start + 1)
+        {
+            return new int?[0];
+        }
+        var res = new List<int?>();
+        int val = 0;
+        var subStr = "";
+        for (int i = start; i <= end; i++)
+        {
+            if (str[i] == '[')
+            {
+                continue;
+            }
+            if (str[i] <= '9' && str[i] >= '0')
+            {
+                var digit = (int)str[i] - 48;
+                val = val*10 + digit;
+            }
+            if (str[i] == ',' || (i == end && str[i] == ']'))
+            {
+                if (subStr == "null")
+                {
+                    res.Add(null);
+                    subStr = "";
+                }
+                else
+                {
+                    res.Add(val);
+                    val = 0;   
+                }
+            }
+            else
+            {
+                subStr += str[i];
+            }
+        }
+        return res.ToArray();
+    }
+
+
     private static int[] ConvertStringToNumArrayInternal(string str, int start, int end)
     {
         if (end <= start + 1)
@@ -117,9 +235,28 @@ public static class DataStructureHelper
         return list.ToArray();
     }
 
+    /// <summary>
+    /// 反转链表
+    /// </summary>
+    /// <param name="head"></param>
+    /// <returns></returns>
+    public static ListNode Reverse(ListNode head)
+    {
+        var cur = head;
+        ListNode prev = null;
+        while (cur != null)
+        {
+            var nextTemp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = nextTemp;
+        }
+        return prev;
+    }
+
     #endregion
 
-    #region 二叉树
+    #region 二叉树处理
     /// <summary>
     /// 从数组生成二叉树，数组应该是按二叉树的层依次写入的,允许省略非必要的null值,参考LeetCode题目中的常见写法
     /// </summary>
@@ -142,6 +279,12 @@ public static class DataStructureHelper
         return root;
     }
 
+    /// <summary>
+    /// 获取指定值的节点
+    /// </summary>
+    /// <param name="root"></param>
+    /// <param name="val"></param>
+    /// <returns></returns>
     public static TreeNode GetNode(this TreeNode root, int val)
     {
         return DFS(root,val);
