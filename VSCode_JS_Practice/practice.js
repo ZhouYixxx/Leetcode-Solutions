@@ -1,14 +1,19 @@
-function checkSpam(str){
-    var lowerStr = str.toLocaleLowerCase();
-    return lowerStr.includes('viagra') || lowerStr.includes('xxx');
+// let myname = 'Mike'; //第一次定义name
+
+// function showName() {
+//     alert(myname);  //输出 Mike 还是 Jay ？
+// }
+
+// function changeName() {
+//     let myname = 'Jay'; //重新定义name
+//     showName(); //调用showName()
+// }
+
+// changeName();
+
+for (let i = 0; i < 5; i++) {
+    setTimeout(function timer() {
+        console.log(i);
+    }, 1000);
 }
 
-function camelize(str){
-    let str1 = str.split('-').map((value, index)=>{
-        if (index != 0) {
-            return value.toLowerCase();
-        }
-        return value[0].toUpperCase() + value.slice(1).toLowerCase();
-    }).join('');
-    return str1;
-}

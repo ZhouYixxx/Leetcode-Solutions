@@ -6,7 +6,11 @@ public class Solution_Offer20 {
     public void Test()
     {
         var s = " T3";
-        var ans = IsNumberFSM(s);
+        var arr = new string[] { ".","46.e3", "2e0",  "1 4","1 ","-1E-16",".1","6+1", "+.8", "9e98+540 3", "459277e38+"};
+        foreach (var item in arr)
+        {
+            var ans = IsNumber2(item);   
+        }
     }
     public bool IsNumber(string s) 
     {
@@ -126,4 +130,108 @@ public class Solution_Offer20 {
         }
         return p == 2 || p == 3 || p == 7 || p == 8;
     }
+
+    #region 2023-07-11
+    
+    public bool IsNumber2(string s)
+    {
+        if (string.IsNullOrEmpty(s))
+        {
+            return false;
+        }
+        s = s.Trim();
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (s[i] == 'E' || s[i] == 'e')
+            {
+                return (IsDemical(s, 0, i-1) || IsInteger(s, 0, i-1)) && IsInteger(s, i+1,s.Length-1);
+            }
+        }
+        return IsDemical(s, 0, s.Length-1) || IsInteger(s, 0, s.Length-1);
+    }
+
+    /// <summary>
+    /// 是否是小数
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
+    public bool IsDemical(string s, int start, int end)
+    {
+        if (start > end)
+        {
+            return false;
+        }
+        //先考虑'+'和'-'
+        bool hasSymbol = s[start] == '+' || s[start] == '-';
+        start = hasSymbol ? start + 1 : start;
+        int i = start;
+        if (i > end) return false;
+        while (i <= end)
+        {
+            if (IsNumberChar(s[i]))
+            {
+                i++;
+                continue;
+            }
+            if (s[i] != '.')
+            {
+                return false;
+            }
+            //情况1： '.'的前后都有至少一位数字
+            if (i > start && i < end)
+            {
+                return IsInteger(s, i+1, end, false) && IsInteger(s, start, i-1, false); 
+            }
+            //情况2： '.'的前面没有数字
+            else if (i == start)
+            {
+                return IsInteger(s, i+1, end, false);
+            }
+            //情况3： '.'的后面没有数字
+            else if (i == end)
+            {
+                return IsInteger(s, start, i-1, false); 
+            }
+            i++;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// 是否是整数
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="allowSymbol"></param>
+    /// <returns></returns>
+    public bool IsInteger(string s, int start, int end, bool allowSymbol = true)
+    {
+        if (start > end)
+        {
+            return false;
+        }
+        bool hasSymbol = s[start] == '+' || s[start] == '-';
+        if (!allowSymbol && hasSymbol)
+        {
+            return false;
+        }
+        int i = hasSymbol ? start + 1 : start;
+        if (i > end) return false;
+        while (i <= end)
+        {
+            if (!IsNumberChar(s[i])) return false;
+            i++;
+        }
+        return true;
+    }
+
+    public bool IsNumberChar(char ch)
+    {
+        return ch >= '0' && ch <= '9';
+    }        
+
+    #endregion
 }

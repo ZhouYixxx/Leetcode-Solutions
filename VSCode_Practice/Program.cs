@@ -16,7 +16,7 @@ namespace VSCode_Practice
             // AsyncTest();
             // System.Console.WriteLine($"222, My Thread ID is :{Thread.CurrentThread.ManagedThreadId}");
             //Console.ReadKey();
-            var sol = new Solution2475();
+            var sol = new Solution_Offer20();
             sol.Test(); 
 
             //aggregate用法测试
