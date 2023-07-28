@@ -5,7 +5,6 @@ public class Solution_Offer20 {
     
     public void Test()
     {
-        var s = " T3";
         var arr = new string[] { ".","46.e3", "2e0",  "1 4","1 ","-1E-16",".1","6+1", "+.8", "9e98+540 3", "459277e38+"};
         foreach (var item in arr)
         {

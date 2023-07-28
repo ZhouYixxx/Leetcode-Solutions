@@ -8,7 +8,6 @@
 public class Solution279 {
     public void Test()
     {
-        var num = 19;
     }
     public int NumSquares(int n) {
         int[] f = new int[n + 1];

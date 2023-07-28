@@ -16,7 +16,20 @@ namespace VSCode_Practice
             // AsyncTest();
             // System.Console.WriteLine($"222, My Thread ID is :{Thread.CurrentThread.ManagedThreadId}");
             //Console.ReadKey();
-            var sol = new Solution_Offer20();
+            var maxQ = new MaxQueue();
+            maxQ.Push_back(6);
+            maxQ.Push_back(3);
+            maxQ.Push_back(3);
+            maxQ.Push_back(3);
+            maxQ.Push_back(4);
+            maxQ.Push_back(2);
+            maxQ.Push_back(2);
+            while (maxQ.Count > 0)
+            {
+                var max = maxQ.Max_value();
+                var front = maxQ.Pop_front();
+            }
+            var sol = new Solution_Offer59_i();
             sol.Test(); 
 
             //aggregate用法测试

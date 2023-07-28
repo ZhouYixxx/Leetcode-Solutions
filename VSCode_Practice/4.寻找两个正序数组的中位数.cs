@@ -10,9 +10,25 @@ using System;
 public class Solution004 {
     public void Test()
     {
-        var nums1 = new int[]{1000001};
-        var nums2 = new int[]{1000000};
-        var ans = FindMedianSortedArrays(nums1, nums2);
+        int m = 1;
+        int n = 2;
+        int max = (int)1E3;
+        var rand = new Random();
+        var nums1 = new int[m];
+        var nums2 = new int[n];
+        for (int i = 0; i < m; i++)
+        {
+            nums1[i] = rand.Next(max);
+        }
+        for (int i = 0; i < n; i++)
+        {
+            nums2[i] = rand.Next(max);
+        }
+        Array.Sort(nums1);
+        Array.Sort(nums2);
+        var nums1_str = string.Join(",", nums1);
+        var nums2_str = string.Join(",", nums2);
+        var ans = FindMedianSortedArrays2(nums1, nums2);
     }
     
     /// <summary>
@@ -127,7 +143,62 @@ public class Solution004 {
         var left_val = Math.Max(nums1_left, nums2_left);
         var right_val = Math.Min(nums1_right, nums2_right);
         return (left_val + right_val)/2d;
+    }
+
+    public double FindMedianSortedArrays2(int[] nums1, int[] nums2)
+    {
+        var count = nums1.Length + nums2.Length;
+        //偶数
+        if ((count & 1) == 0 )
+        {
+            var left = FindKthElement(count/2, nums1, 0, nums1.Length-1, nums2, 0, nums2.Length-1);
+            var right = FindKthElement(count/2+1, nums1, 0, nums1.Length-1, nums2, 0, nums2.Length-1);
+            return (left + right)/2d;
+        }
+        else
+        {
+            var ans = FindKthElement(count/2+1, nums1, 0, nums1.Length-1, nums2, 0, nums2.Length-1);
+            return ans;
+        }
     } 
+
+    /// <summary>
+    /// 从小到大寻找排行第k的数（2023-07-25）
+    /// </summary>
+    private int FindKthElement(int k, int[] nums1, int start1, int end1, int[] nums2, int start2, int end2)
+    {
+        if (k > ((end1 - start1 + 1) + (end2 - start2 + 1)))
+        {
+            throw new ArgumentOutOfRangeException("k值不能大于元素总个数");
+        }
+        if (start1 > end1)
+        {
+            return nums2[start2 + k - 1];
+        }
+        if (start2 > end2)
+        {
+            return nums1[start1 + k - 1];
+        }
+        if (k == 1)
+        {
+            return Math.Min(nums1[start1], nums2[start2]);
+        }
+        var idx1 = start1 + k / 2 - 1;
+        var idx2 = start2 + k / 2 - 1;
+        if (idx1 > end1) idx1 = end1;
+        if (idx2 > end2) idx2 = end2;
+        if (nums1[idx1] <= nums2[idx2])
+        {
+            int excludeCount = idx1 - start1 + 1;
+            return FindKthElement(k - excludeCount, nums1, idx1+1, end1, nums2, start2, end2);
+        }
+        else
+        {
+            int excludeCount = idx2 - start2 + 1;
+            return FindKthElement(k - excludeCount, nums1, start1, end1, nums2, idx2+1, end2);
+        }
+    }
+
 }
 // @lc code=end
 
