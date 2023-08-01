@@ -10,8 +10,8 @@ using System;
 public class Solution367 {
     public void Test()
     {
-        var num = 2147395600;
-        var ans = IsPerfectSquare(num);
+        var num = int.MaxValue;
+        var ans = IsPerfectSquare2(num);
     }
 
     //二分法
@@ -42,6 +42,34 @@ public class Solution367 {
         }
         return false;
     }
+
+    public bool IsPerfectSquare2(int num) {
+        if (num == 1)
+        {
+            return true;
+        }
+        long right = num;
+        long left = 1;
+        while (left <= right)
+        {
+            long mid = (left + right) / 2;
+            long res = mid * mid;
+            if (res == num)
+            {
+                return true;
+            }
+            if (res > num)
+            {
+                right = mid-1;
+            }
+            else
+            {
+                left = mid+1;
+            }
+        }
+        return false;
+    }
+
 }
 // @lc code=end
 
