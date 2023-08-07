@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public static class DataStructureHelper
@@ -384,4 +385,19 @@ public static class DataStructureHelper
     }
 
     #endregion
+
+    public static string BitArrayToString(BitArray arr)
+    {
+        var bits = new bool[arr.Count];
+        arr.CopyTo(bits, 0);
+        var charArray = bits.Select(bit => (char)(bit ? '1' : '0')).ToArray();
+        return new string(charArray);
+    }
+
+    public static int BitArrayToInt(BitArray arr)
+    {
+        int[] array = new int[1];
+        arr.CopyTo(array, 0);
+        return array[0];
+    }
 }

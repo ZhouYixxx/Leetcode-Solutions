@@ -1,12 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 public class Solution_Offer44
 {
+    private char[] chars = new char[0];
     public void Test()
     {
-        var num = 1000;
+        var sb = new StringBuilder(); 
+        for (int i = 0; i < 1000; i++)
+        {
+            sb.Append(i.ToString());
+        }
+        chars = sb.ToString().ToCharArray();
+        var num = 2147483647;
         var ans = FindNthDigit(num);
     }
 
@@ -17,7 +25,8 @@ public class Solution_Offer44
         }
         //判断是k位数
         int k = 1;
-        while (GetKthDigitLength(k) < n)
+        
+        while (n > GetKthDigitLength(k))
         {
             n -= (int)GetKthDigitLength(k);
             k++;
@@ -27,27 +36,32 @@ public class Solution_Offer44
             return 1;
         }
         //判断经过了多少个完整的k位数
-        var remain = n % k;
-        long num = (long)Math.Pow(10,k) + n / (k+1);
-        if (remain == 0)
-        {
-            return (int)(num % 10);
-        }
-        else
-        {
-            return GetKthDigit(num, remain);
-        }
+        var remain = (n+1) % k;
+        long num = (long)Math.Pow(10,k-1) + n / k;
+        //现在第n位 = 数字num的第remain位数字
+        return GetKthDigit(num, remain == 0 ? k : remain, k);
     }
+
+
 
     /// <summary>
     /// 获取数字num的第K位数
     /// </summary>
     /// <param name="num"></param>
     /// <param name="k"></param>
+    /// <param name="numDigits"></param>
     /// <returns></returns>
-    private int GetKthDigit(long num, int k)
+    private int GetKthDigit(long num, int k, int numDigits)
     {
-        return 0;
+        long res = num;
+        long digit = 0;
+        while (numDigits >= k)
+        {
+            digit = res % 10;
+            res /= 10;
+            numDigits--;
+        }
+        return (int)digit;
     }
 
     /// <summary>
@@ -59,7 +73,7 @@ public class Solution_Offer44
         {
             return 10;
         }
-        return (long)Math.Pow(10, k) * k * 9;
+        return (long)Math.Pow(10, k-1) * k * 9;
     }
 
     /// <summary>
@@ -75,4 +89,7 @@ public class Solution_Offer44
         return (long)(k * Math.Pow(10, k) - 5 * (k-1) * Math.Pow(10, k-2));
 
     }
+
+
+    
 }
