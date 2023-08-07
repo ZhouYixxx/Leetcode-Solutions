@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜鸟教程</title>
+</head>
+<body>
+    <h1>my first JavaScript program</h1>
+    <p id="demo">JavaScript can change the content of HTML element</p>
+    <button onclick="myFunc()">点击变化</button>
+    
+    <script>
+        function myFunc(params) {
+            var x = document.getElementById("demo");
+            if (x.innerHTML === "JavaScript can change the content of HTML element") {
+                x.innerHTML = "Hello JavaScript";   
+            }
+            else{
+                x.innerHTML = "JavaScript can change the content of HTML element";
+            }
+        }
+    </script>
+</body>
+</html>
