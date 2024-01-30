@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"dotnet.defaultSolution": "CodePractice/CodePractice.sln"
+		"dotnet.defaultSolution": "VSCode_Practice/VSCode_Practice.sln"
 	}
 }

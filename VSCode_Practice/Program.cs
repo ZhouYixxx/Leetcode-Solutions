@@ -10,7 +10,7 @@ namespace VSCode_Practice
         private static int[] _nums = new int[1000];
         static void Main(string[] args)
         {
-            var sol = new Solution_LCR05();
+            var sol = new Solution314();
             sol.Test();
         }
 
