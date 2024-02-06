@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 public static class DataStructureHelper
 {
@@ -101,6 +102,51 @@ public static class DataStructureHelper
             }
         }
         return res.ToArray();
+    }
+
+        /// <summary>
+    /// 将[["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]转化为二维char数组
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static List<IList<string>> ConvertStringToTwoDimenStringArray(string str)
+    {
+        var res = new List<IList<string>>();
+        var stack = new Stack<char>();
+        int start = 0;
+        int end = 0;
+        for (int i = 0; i < str.Length; i++)
+        {
+            var ch = str[i];
+            if (ch == '[')
+            {
+                if (stack.Count == 1)
+                {
+                    start = i;
+                }
+                stack.Push(ch);
+            }
+            else if (ch == ']')
+            {
+                if (stack.Count == 2)
+                {
+                    end = i;
+                    //var subStr = str.Substring(start, end-start+1);
+                    var charArray = new List<char>();
+                    for (int k = start; k <= end; k++)
+                    {
+                        if (str[k] == ',' || str[k] == '\'' || str[k] == '[' || str[k] == ']')
+                        {
+                            continue;
+                        }
+                        charArray.Add(str[k]);
+                    }
+                    //res.Add(charArray.ToArray());
+                    stack.Pop();
+                }
+            }
+        }
+        return res;
     }
 
     /// <summary>
@@ -399,5 +445,16 @@ public static class DataStructureHelper
         int[] array = new int[1];
         arr.CopyTo(array, 0);
         return array[0];
+    }
+
+    public static void PrintWithIndent(int count, string message)
+    {
+        var builder = new StringBuilder();
+        for (int i = 0; i < count; i++)
+        {
+            builder.Append("  ");
+        }
+        builder.Append(message);
+        Console.WriteLine(builder.ToString());
     }
 }

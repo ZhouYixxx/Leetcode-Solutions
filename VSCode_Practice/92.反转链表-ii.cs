@@ -20,7 +20,7 @@ public class Solution92 {
     public void Test()
     {
         var node = DataStructureHelper.GenerateLinkedListFromArray(new int[]{1,2,3,4,5});
-        var node1 = ReverseBetween1(node,1,5);
+        var node1 = reverseBetween2(node,2,2);
         var ans = node1.ToArray();
     }
 
@@ -99,6 +99,28 @@ public class Solution92 {
             preNode.next = next;//next插入preNode之后
         }
 
+        return dummy.next;
+    }
+
+    public ListNode reverseBetween2(ListNode head, int m, int n) {
+        // write code here
+        var dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode pre = dummy; //the node before the start node
+        ListNode start = dummy.next; //the moved node
+
+        for(int i = 0; i<m-1; i++){
+            pre = pre.next;
+            start = start.next;
+        }
+        for(int i = 0; i< n-m; i++)
+        {
+            //reverse start and next
+            var removed = start.next;
+            start.next = removed == null ? null : removed.next;
+            removed.next = pre.next;
+            pre.next = removed;
+        }
         return dummy.next;
     }
 }

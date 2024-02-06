@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
+using Microsoft.VisualBasic;
 
 
 namespace VSCode_Practice
@@ -10,7 +12,8 @@ namespace VSCode_Practice
         private static int[] _nums = new int[1000];
         static void Main(string[] args)
         {
-            var sol = new Solution314();
+
+            var sol = new Solution_interview();
             sol.Test();
         }
 
